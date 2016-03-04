@@ -276,12 +276,6 @@ MonoBehaviour:
   _isMainScene: 1
   _sceneSetup:
   - scene:
-      editorAssetGUID: 28679939ba0f5814e85416132a72ea90
-      name: scene_Main
-      _path: Assets/Resources/Scenes/scene_Main.unity
-    loadInEditor: 1
-    loadMethod: 1
-  - scene:
       editorAssetGUID: 465eb38e0acbe6449935d3e493c41a1a
       name: scene_Objects
       _path: Assets/Resources/Scenes/scene_Objects.unity
@@ -291,6 +285,12 @@ MonoBehaviour:
       editorAssetGUID: b22d97e5080a57d4e99f7994c668763a
       name: scene_UI
       _path: Assets/Resources/Scenes/scene_UI.unity
+    loadInEditor: 1
+    loadMethod: 1
+  - scene:
+      editorAssetGUID: de03f409748d4b148b08553414029a22
+      name: scene_Audio
+      _path: Assets/Resources/Scenes/scene_Audio.unity
     loadInEditor: 1
     loadMethod: 1
   _thisScenePath: Assets/Resources/Scenes/scene_Audio.unity
