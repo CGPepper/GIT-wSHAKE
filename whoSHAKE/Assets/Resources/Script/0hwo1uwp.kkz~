@@ -53,7 +53,6 @@ public class script_UI : MonoBehaviour
     private Color SliderMaxedColor = new Color32(141,141,141,255);
     private List<GameObject> OverviewList = new List<GameObject>();
     private bool Slider_Untouched = true;
-    private bool bMouseDown = false;
     
 
     //public
@@ -92,10 +91,8 @@ public class script_UI : MonoBehaviour
                 sound_PlayClick();
             }
         }
-        if (Input.GetMouseButtonDown(0))
-            bMouseDown = true;
-        else if (Input.GetMouseButtonUp(0))
-            ReleaseMouse();
+        
+        
     }
 
     private void UI_Start()
@@ -335,6 +332,7 @@ public class script_UI : MonoBehaviour
             slider.GetComponent<Slider>().value = value;
             if (!SliderMaxed)
             {
+
                 SliderMaxed = true;
                 SliderSetHandle(SliderMaxedColor);
             }
@@ -351,11 +349,6 @@ public class script_UI : MonoBehaviour
         GameObject Me = script_GameManager.Instance.GetCurrentPlayer(objectCollector.PLAYERS);
         Me.GetComponent<script_Player>().Stats[index + 4] = (int)value;
         //Tooltip
-        if (Slider_Untouched && bMouseDown)
-        {
-            Slider_Untouched = false;
-            Q_Tween(0, "Sliders", "TooltipShow", true);
-        }
         script_Tooltip scTooltip = InteractibleElements[8].GetComponent<script_Tooltip>();
         int stock = Me.GetComponent<script_Player>().Stats[index];
         script_GameManager.Instance.HideTooltipsText(scTooltip.ReferenceTooltip);
@@ -570,17 +563,5 @@ public class script_UI : MonoBehaviour
             }
         }
         return total;
-    }
-
-    private void ReleaseMouse()
-    {
-        bMouseDown = false;
-        if (!Slider_Untouched)
-        {
-            Q_Tween(0, "Sliders", "TooltipHide", true);
-            Slider_Untouched = true;
-        }
-            
-
     }
 }
