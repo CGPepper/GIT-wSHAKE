@@ -3466,7 +3466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16457b5703409d4e9bcd27a99e5248d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: 0
+  test: 1
   wooshes:
   - {fileID: 8300000, guid: 7047578659f26644889f894144717d7d, type: 3}
   - {fileID: 8300000, guid: 640618793d6270c428757cffdf71f56e, type: 3}

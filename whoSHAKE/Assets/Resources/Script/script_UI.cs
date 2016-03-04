@@ -59,8 +59,8 @@ public class script_UI : MonoBehaviour
 
     void Awake()
     {
-        script_GameManager.Instance.SetupGameObjects(0, gameObject);
         DOTween.Init();
+        script_GameManager.Instance.SetupGameObjects(0, gameObject);
     }
     public void SetupObject(GameObject go)
     {

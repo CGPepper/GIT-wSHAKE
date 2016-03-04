@@ -7,7 +7,7 @@ public class script_GameManager : script_Singleton<script_GameManager>
     public float FoodDivider = 10000f;
     public GameObject objectCollector;
     
-    private GameObject[] MainObjects = new GameObject[2]; //0 UI, 1 objectCollector
+    private GameObject[] MainObjects = new GameObject[3]; //0 UI, 1 objectCollector, 2 SoundManager
 
 
 
@@ -15,10 +15,11 @@ public class script_GameManager : script_Singleton<script_GameManager>
     public void SetupGameObjects(int index, GameObject go)
     {
         MainObjects[index] = go;
-        if (MainObjects[0] && MainObjects[1])
+        if (MainObjects[0] && MainObjects[1] && MainObjects[2])
         {
-            MainObjects[0].GetComponent<script_UI>().SetupObject(MainObjects[1]);
             MainObjects[1].GetComponent<script_objectCollector>().SetupObject(MainObjects[0]);
+            MainObjects[2].GetComponent<script_SoundManager>().SetupObject(MainObjects[0], MainObjects[1]);
+            MainObjects[0].GetComponent<script_UI>().SetupObject(MainObjects[1]);
         }
     }
     
