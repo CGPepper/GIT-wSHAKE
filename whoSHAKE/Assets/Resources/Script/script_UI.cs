@@ -127,10 +127,6 @@ public class script_UI : MonoBehaviour
     /**
     Playing Sounds
     **/
-    
-
-
-
     public void sound_PlayMisc(string index)
     {
         int i = int.Parse(index);
