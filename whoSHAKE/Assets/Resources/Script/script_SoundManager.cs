@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Fabric;
 
 public class script_SoundManager : MonoBehaviour 
 {
@@ -27,9 +28,10 @@ public class script_SoundManager : MonoBehaviour
     // /////////////////
 
     //Will receive calls from other scripts saying: I want to play a sound with this ID, so many seconds
-    public void PlaySound(string id, float soundDuration)
+	// FIXME duration? lets talk about that later
+	public void PlaySound(string eventName, GameObject obj = null)
     { 
-    
+		Fabric.EventManager.Instance.PostEvent (eventName, obj);
     }
 
 
