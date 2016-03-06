@@ -505,6 +505,9 @@ public class script_UI : MonoBehaviour
             frame.transform.SetParent(InteractibleElements[7].transform,false);
             frame.name = "PlayerFrame";
             SetCardValues(script, frame,total);
+            DOTweenAnimation scTween = frame.GetComponent<DOTweenAnimation>();
+            scTween.delay = 0.5f + index * 0.2f;
+            scTween.enabled = true;
             index++;
         } 
     }

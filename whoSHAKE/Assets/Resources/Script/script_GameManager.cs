@@ -7,7 +7,7 @@ public class script_GameManager : script_Singleton<script_GameManager>
     public float FoodDivider = 10000f;
     public GameObject objectCollector;
     
-    private GameObject[] MainObjects = new GameObject[3]; //0 UI, 1 objectCollector, 2 SoundManager
+    public GameObject[] MainObjects = new GameObject[3]; //0 UI, 1 objectCollector, 2 SoundManager
 
 
 
