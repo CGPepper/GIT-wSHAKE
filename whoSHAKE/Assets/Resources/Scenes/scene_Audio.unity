@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/orc/otherplayer_eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/shrinkhead/attackorder
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/orc/eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -794,7 +794,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/shrinkhead/eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -1030,9 +1030,10 @@ MonoBehaviour:
   _markers: []
   _regions: []
   _playMode: 0
-  _randomWeights: 
+  _randomWeights: 64000000
   _shareRandomNoRepeatHistory: 0
-  _audioClips: []
+  _audioClips:
+  - {fileID: 0}
   _looped: 0
   _delayOnFirstPlay: 0
   _loopDelay: 0
@@ -1049,7 +1050,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/dragon/generic
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -1334,7 +1335,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/skeletor/attackorder
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -1491,7 +1492,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/skeletor/eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -1665,7 +1666,19 @@ MonoBehaviour:
   - music/game
   - music/intro
   - ui/button
+  - ui/pageflip
   - ui/slider
+  - ui/whoosh
+  - vo/dragon/attackorder
+  - vo/dragon/eliminated
+  - vo/dragon/endround
+  - vo/dragon/generic
+  - vo/dragon/otherplayer_eliminated
+  - vo/ghost/attackorder
+  - vo/ghost/eliminated
+  - vo/ghost/endround
+  - vo/ghost/generic
+  - vo/ghost/otherplayer_eliminated
   - vo/intro/camera_intro
   - vo/intro/distance_explosion
   - vo/intro/save_peasants
@@ -1674,6 +1687,31 @@ MonoBehaviour:
   - vo/intro/whoshake_itsyou1
   - vo/intro/whoshake_itsyou2
   - vo/intro/yesok
+  - vo/mummy/attackorder
+  - vo/mummy/eliminated
+  - vo/mummy/endround
+  - vo/mummy/generic
+  - vo/mummy/otherplayer_eliminated
+  - vo/orc/attackorder
+  - vo/orc/eliminated
+  - vo/orc/endround
+  - vo/orc/generic
+  - vo/orc/otherplayer_eliminated
+  - vo/shrinkhead/attackorder
+  - vo/shrinkhead/eliminated
+  - vo/shrinkhead/endround
+  - vo/shrinkhead/generic
+  - vo/shrinkhead/otherplayer_eliminated
+  - vo/skeletor/attackorder
+  - vo/skeletor/eliminated
+  - vo/skeletor/endround
+  - vo/skeletor/generic
+  - vo/skeletor/otherplayer_eliminated
+  - vo/werewolf/attackorder
+  - vo/werewolf/eliminated
+  - vo/werewolf/endround
+  - vo/werewolf/generic
+  - vo/werewolf/otherplayer_eliminated
   profiler:
     totalMS: 0
     recordedMS: 0
@@ -1727,6 +1765,167 @@ MonoBehaviour:
   _fabricEditorPath: Assets/Fabric/Editor
   _numVirtualizationEvents: 1000
   _onApplicationPauseBehavior: 0
+--- !u!1 &611482502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 611482503}
+  - 114: {fileID: 611482505}
+  - 114: {fileID: 611482504}
+  m_Layer: 0
+  m_Name: PageFlip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &611482503
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 611482502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1573153733}
+  m_RootOrder: 2
+--- !u!114 &611482504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 611482502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1973381776, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxInstances: 1
+  _stealingBehaviour: 0
+  _minimumPlaybackInterval: 0
+  _overrideParentVolume: 0
+  _volume: 1
+  _volumeRandomization: 0
+  _mute: 0
+  _overrideParentPitch: 0
+  _pitch: 1
+  _pitchRandomization: 0
+  _override2DProperties: 0
+  _pan2D: 0
+  _pan2DRandomization: 0
+  _override3DProperties: 1
+  _priority: 128
+  _panLevel: 0
+  _spreadLevel: 0
+  _dopplerLevel: 1
+  _maxDistance: 500
+  _minDistance: 1
+  _rolloffMode: 0
+  _overrideFadeProperties: 0
+  _fadeInTime: 0
+  _fadeInCurve: 0.5
+  _fadeOutTime: 0
+  _fadeOutCurve: 0.5
+  _reverbZoneMix: 1
+  _overrideBypassProperties: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _overrideAudioMixerGroup: 0
+  _audioMixerGroup: {fileID: 0}
+  _audioBusName: 
+  _overrideAudioBus: 0
+  _overrideMusicTimeSettings: 0
+  _musicTimeSettingsIndex: -1
+  _musicTempo: -1
+  _musicTimeSignatureLower: 0
+  _musicTimeSignatureUpper: 0
+  _probability: 100
+  _multipleInstancesPerGameObject: 1
+  _componentVirtualization: 0
+  _overrideVolumeThreshold: 0
+  _volumeThreshold: 1
+  _virtualizationBehavior: 1
+  _RTPManager:
+    _parameters: []
+    _reference: {fileID: 0}
+  Guid: 
+  _componentHolder: {fileID: 0}
+  _onEventNotifyEventName: 
+  _audioClip: {fileID: 0}
+  _audioClipHandle:
+    _audioClipPath: 
+    _useAudioClipPath: 1
+  _dynamicAudioClipLoading: 0
+  _dynamicAudioClipUnloadDelay: 0
+  _dynamicAsyncAudioClipLoading: 0
+  _audioClipAssetPath: 0
+  _delay: 0
+  _delayInBeats: 0
+  _loop: 0
+  _numLoops: -1
+  _loopMarkersLoaded: 0
+  _useLoopMarkers: 1
+  _dontPlay: 0
+  _dontStopOnDestroy: 0
+  _ignoreVirtualization: 0
+  _randomizePosition: 0
+  _randomizeMinPosition: 0
+  _randomizeMaxPosition: 10
+  _syncWithMusicTime: 0
+  _markers: []
+  _regions: []
+  _playMode: 0
+  _randomWeights: 64000000640000006400000064000000
+  _shareRandomNoRepeatHistory: 0
+  _audioClips:
+  - {fileID: 8300000, guid: ad7492740ee4b674fb6f1028f168a079, type: 3}
+  - {fileID: 8300000, guid: 74225c67936939b489c4fde11443abcc, type: 3}
+  - {fileID: 8300000, guid: 8351b77e4125ab442be46a0e98339872, type: 3}
+  - {fileID: 8300000, guid: 518c39eebfd8a714a9609c616dec157c, type: 3}
+  _looped: 0
+  _delayOnFirstPlay: 0
+  _loopDelay: 0
+  _delayRandomization: 0
+  _delayMaxRandomization: 0
+--- !u!114 &611482505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 611482502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventName: ui/pageflip
+  _eventID: 0
+  _overrideEventTriggerAction: 0
+  _overrideParameters:
+    _overrideIncomingEventAction: 0
+    _incomingEventAction: 0
+    _overrideEventAction: 0
+    _type: 0
+    _floatParameter: 1
+    _stringParameter: 
+    _switchPresetData:
+      _sourcePreset: 
+      _targetPreset: 
+    _dspParameterData:
+      _dspType: 0
+      _parameter: 
+      _value: 0
+      _time: 0
+      _curve: 0.5
+    _transitionToSnapshotData:
+      _snapshot: 
+      _timeToReach: 0
 --- !u!1 &643116777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,7 +2187,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/shrinkhead/generic
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -2145,7 +2344,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/werewolf/eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -2431,9 +2630,10 @@ MonoBehaviour:
   _markers: []
   _regions: []
   _playMode: 0
-  _randomWeights: 
+  _randomWeights: 64000000
   _shareRandomNoRepeatHistory: 0
-  _audioClips: []
+  _audioClips:
+  - {fileID: 0}
   _looped: 0
   _delayOnFirstPlay: 0
   _loopDelay: 0
@@ -2450,7 +2650,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/dragon/endround
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -2607,7 +2807,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/mummy/generic
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -2745,9 +2945,10 @@ MonoBehaviour:
   _markers: []
   _regions: []
   _playMode: 0
-  _randomWeights: 
+  _randomWeights: 64000000
   _shareRandomNoRepeatHistory: 0
-  _audioClips: []
+  _audioClips:
+  - {fileID: 0}
   _looped: 0
   _delayOnFirstPlay: 0
   _loopDelay: 0
@@ -2764,7 +2965,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/dragon/attackorder
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -2921,7 +3122,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/skeletor/generic
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -3227,7 +3428,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/shrinkhead/otherplayer_eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -3385,7 +3586,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/dragon/otherplayer_eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -3542,7 +3743,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/orc/generic
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -3760,7 +3961,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/ghost/generic
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -3917,7 +4118,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/werewolf/endround
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -4383,7 +4584,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/mummy/eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -4541,7 +4742,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/mummy/otherplayer_eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -4698,7 +4899,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/mummy/attackorder
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -4855,7 +5056,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/werewolf/generic
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -5341,7 +5542,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/skeletor/otherplayer_eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -5560,7 +5761,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/werewolf/otherplayer_eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -5749,7 +5950,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/ghost/eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -6067,6 +6268,169 @@ MonoBehaviour:
     _transitionToSnapshotData:
       _snapshot: 
       _timeToReach: 0
+--- !u!1 &1552524881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1552524882}
+  - 114: {fileID: 1552524884}
+  - 114: {fileID: 1552524883}
+  m_Layer: 0
+  m_Name: Whoosh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1552524882
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1552524881}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1573153733}
+  m_RootOrder: 3
+--- !u!114 &1552524883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1552524881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1973381776, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxInstances: 1
+  _stealingBehaviour: 0
+  _minimumPlaybackInterval: 0
+  _overrideParentVolume: 0
+  _volume: 1
+  _volumeRandomization: 0
+  _mute: 0
+  _overrideParentPitch: 0
+  _pitch: 1
+  _pitchRandomization: 0
+  _override2DProperties: 0
+  _pan2D: 0
+  _pan2DRandomization: 0
+  _override3DProperties: 1
+  _priority: 128
+  _panLevel: 0
+  _spreadLevel: 0
+  _dopplerLevel: 1
+  _maxDistance: 500
+  _minDistance: 1
+  _rolloffMode: 0
+  _overrideFadeProperties: 0
+  _fadeInTime: 0
+  _fadeInCurve: 0.5
+  _fadeOutTime: 0
+  _fadeOutCurve: 0.5
+  _reverbZoneMix: 1
+  _overrideBypassProperties: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _overrideAudioMixerGroup: 0
+  _audioMixerGroup: {fileID: 0}
+  _audioBusName: 
+  _overrideAudioBus: 0
+  _overrideMusicTimeSettings: 0
+  _musicTimeSettingsIndex: -1
+  _musicTempo: -1
+  _musicTimeSignatureLower: 0
+  _musicTimeSignatureUpper: 0
+  _probability: 100
+  _multipleInstancesPerGameObject: 1
+  _componentVirtualization: 0
+  _overrideVolumeThreshold: 0
+  _volumeThreshold: 1
+  _virtualizationBehavior: 1
+  _RTPManager:
+    _parameters: []
+    _reference: {fileID: 0}
+  Guid: 
+  _componentHolder: {fileID: 0}
+  _onEventNotifyEventName: 
+  _audioClip: {fileID: 0}
+  _audioClipHandle:
+    _audioClipPath: 
+    _useAudioClipPath: 1
+  _dynamicAudioClipLoading: 0
+  _dynamicAudioClipUnloadDelay: 0
+  _dynamicAsyncAudioClipLoading: 0
+  _audioClipAssetPath: 0
+  _delay: 0
+  _delayInBeats: 0
+  _loop: 0
+  _numLoops: -1
+  _loopMarkersLoaded: 0
+  _useLoopMarkers: 1
+  _dontPlay: 0
+  _dontStopOnDestroy: 0
+  _ignoreVirtualization: 0
+  _randomizePosition: 0
+  _randomizeMinPosition: 0
+  _randomizeMaxPosition: 10
+  _syncWithMusicTime: 0
+  _markers: []
+  _regions: []
+  _playMode: 0
+  _randomWeights: 640000006400000064000000640000006400000064000000
+  _shareRandomNoRepeatHistory: 0
+  _audioClips:
+  - {fileID: 8300000, guid: aa4b0441a9e1218448a3df13a96ea277, type: 3}
+  - {fileID: 8300000, guid: c7888f52ccfd95546a7cad886f446029, type: 3}
+  - {fileID: 8300000, guid: 7047578659f26644889f894144717d7d, type: 3}
+  - {fileID: 8300000, guid: 13ec8187bed54cf44bd90641fa00dd7a, type: 3}
+  - {fileID: 8300000, guid: 010d54d81a30f66429983a114276d916, type: 3}
+  - {fileID: 8300000, guid: 640618793d6270c428757cffdf71f56e, type: 3}
+  _looped: 0
+  _delayOnFirstPlay: 0
+  _loopDelay: 0
+  _delayRandomization: 0
+  _delayMaxRandomization: 0
+--- !u!114 &1552524884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1552524881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventName: ui/whoosh
+  _eventID: 0
+  _overrideEventTriggerAction: 0
+  _overrideParameters:
+    _overrideIncomingEventAction: 0
+    _incomingEventAction: 0
+    _overrideEventAction: 0
+    _type: 0
+    _floatParameter: 1
+    _stringParameter: 
+    _switchPresetData:
+      _sourcePreset: 
+      _targetPreset: 
+    _dspParameterData:
+      _dspType: 0
+      _parameter: 
+      _value: 0
+      _time: 0
+      _curve: 0.5
+    _transitionToSnapshotData:
+      _snapshot: 
+      _timeToReach: 0
 --- !u!1 &1573153732
 GameObject:
   m_ObjectHideFlags: 0
@@ -6095,6 +6459,8 @@ Transform:
   m_Children:
   - {fileID: 1313846840}
   - {fileID: 1264096185}
+  - {fileID: 611482503}
+  - {fileID: 1552524882}
   m_Father: {fileID: 332996140}
   m_RootOrder: 0
 --- !u!114 &1573153734
@@ -6279,9 +6645,10 @@ MonoBehaviour:
   _markers: []
   _regions: []
   _playMode: 0
-  _randomWeights: 
+  _randomWeights: 64000000
   _shareRandomNoRepeatHistory: 0
-  _audioClips: []
+  _audioClips:
+  - {fileID: 0}
   _looped: 0
   _delayOnFirstPlay: 0
   _loopDelay: 0
@@ -6298,7 +6665,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/dragon/eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -6455,7 +6822,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/ghost/endround
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -6612,7 +6979,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/mummy/endround
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -6770,7 +7137,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/ghost/otherplayer_eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -6927,7 +7294,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/orc/endround
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -7084,7 +7451,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/orc/attackorder
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -7495,7 +7862,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/werewolf/attackorder
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -7652,7 +8019,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/ghost/attackorder
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -7841,7 +8208,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/skeletor/endround
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -7998,7 +8365,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: _UnSet_
+  _eventName: vo/shrinkhead/endround
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
