@@ -108,18 +108,20 @@ public class script_GameManager : script_Singleton<script_GameManager>
         int totalImigrants = (int)(totPopAll * imigrationFactor);
         int ownImigrants = (int)(ownPop*imigrationFactor);
         float stockFactor = 0.08f;
-        float playerRestFractionAtLeast = totalRest / (totRestAllPlayersMax - ownPop + set);
-        float playerRestFractionAtMost = (totStockAll+set > 0) ? totalRest / (totStockAll + set) : 1;
-        float playerRestFraction = (totSetAll + totStockAll) > 0 ? totalRest / (totSetAll + totStockAll): 1;
+        float playerRestFractionAtLeast = totalRest / ((float)totRestAllPlayersMax - (float)ownPop + (float)set);
+        float playerRestFractionAtMost = (totStockAll+set > 0) ? totalRest / ((float)totStockAll + (float)set) : 1;
+        float playerRestFraction = (totSetAll + totStockAll) > 0 ? totalRest / ((float)totSetAll + (float)totStockAll) : 1;
         //values
         result[0] = stock + totalRest; //total rest power
         result[1] = (int)(totalImigrants*playerRestFractionAtMost ); //gain at most - if everyone set 0
         result[2] = (int)(ownImigrants - playerRestFractionAtLeast*ownImigrants); //lose at most - if everyone set max
         result[3] = (int)(set * stockFactor); //add stock
-        result[4] = (int)(totalImigrants*playerRestFraction); //population gain by fraction.
+        result[4] = (int)(totalImigrants*playerRestFraction) - ownImigrants; //population gain by fraction.
+        Debug.Log(player.GetComponent<script_Player>().Name + " " + playerRestFraction);
         return result;
     }
 
+    //DANCE
     public string[] calculateByDance(GameObject player)
     {
         string[] result = new string[7] { "", "", "", "", "", "", "" }; //0 Combined Dance 1 Player Total Dance 2 Most points name 3 most points points 4 Least points Name 5 Least points points 6 Dance Gain

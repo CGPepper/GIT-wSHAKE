@@ -523,7 +523,6 @@ public class script_UI : MonoBehaviour
         int foodSet = player.Stats[6];
         int foodStored = player.Stats[2];
         int[] FoodCalc = script_GameManager.Instance.calculateByFood(pop, foodSet, foodStored);
-        Debug.Log(player.Name + " " + foodSet.ToString());
         int popByFood = FoodCalc[0];                // ----------//
         string addonString = "+";
         if (popByFood < 0) addonString = "";
@@ -538,6 +537,24 @@ public class script_UI : MonoBehaviour
         string s_popByRest = addonString + popByRest.ToString();
         _text = frame.transform.Find("PopGain/byRest/Rest").gameObject.GetComponent<Text>();
         _text.text = s_popByRest;
+        //Calculate dance
+        string[] DanceCalc = script_GameManager.Instance.calculateByDance(player.gameObject);
+        string popByDance = DanceCalc[6];
+        _text = frame.transform.Find("DanceGain/byDance/Dance").gameObject.GetComponent<Text>();
+        _text.text = "+" + popByDance;
+        //Totals 
+        int playerPop = player.Stats[0] + popByFood + popByRest - player.Stats[5];
+        int playerDance = player.Stats[4] + int.Parse(popByDance);
+        _text = frame.transform.Find("totPop/Pop").gameObject.GetComponent<Text>();
+        _text.text = playerPop.ToString();
+        _text = frame.transform.Find("totDance/Dance").gameObject.GetComponent<Text>();
+        _text.text = playerDance.ToString();
+        //Set new player stats
+        player.Stats[0] = playerPop;
+        player.Stats[1] += player.Stats[5];
+        player.Stats[2] += FoodCalc[1];
+        player.Stats[3] += RestCalc[3];
+        player.Stats[4] = playerDance;
     }
 
     private float[] SetRandomAiValues(List<GameObject> Players)
