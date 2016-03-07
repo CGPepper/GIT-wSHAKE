@@ -524,14 +524,20 @@ public class script_UI : MonoBehaviour
         int foodStored = player.Stats[2];
         int[] FoodCalc = script_GameManager.Instance.calculateByFood(pop, foodSet, foodStored);
         Debug.Log(player.Name + " " + foodSet.ToString());
-        int popByFood = FoodCalc[0];
+        int popByFood = FoodCalc[0];                // ----------//
         string addonString = "+";
         if (popByFood < 0) addonString = "";
         string s_popByFood = addonString + popByFood.ToString();
         _text = frame.transform.Find("PopGain/byFood/Food").gameObject.GetComponent<Text>();
         _text.text = s_popByFood;
         //Calculate and set Rest
-
+        int[] RestCalc = script_GameManager.Instance.calculateByRest(player.gameObject);
+        int popByRest = RestCalc[4];                // ----------//
+        addonString = "+";
+        if (popByRest < 0) addonString = "";
+        string s_popByRest = addonString + popByRest.ToString();
+        _text = frame.transform.Find("PopGain/byRest/Rest").gameObject.GetComponent<Text>();
+        _text.text = s_popByRest;
     }
 
     private float[] SetRandomAiValues(List<GameObject> Players)
