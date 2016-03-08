@@ -8,8 +8,9 @@ using DG.Tweening;
 public class script_UI : MonoBehaviour 
 {
     public bool test = true;
-    //this is a new line
-    //change something else
+    public GameObject[] PlayerStatsElements = new GameObject[8];
+
+
     [SerializeField]
     private AudioClip[] wooshes = new AudioClip[6];
     [SerializeField]
@@ -228,14 +229,24 @@ public class script_UI : MonoBehaviour
             Q_Tween(0, "Frame_Upper", "ShowFrames", true);
             Q_Tween(0.3f, "Button_Settings", "ShowSettings", false);
             Q_Tween(1f, "Sliders", "ShowSliders", false);
+            Q_Tween(1f, "Frame_UpperTotDance", "ShowTotDance", false);
             TimerStart();
+            script_GameManager.Instance.NextRound();
         }
         else if (id == "endSelection")
         {
             Q_Tween(0, "Sliders", "HideSliders", false);
             SetupPlayerOverview();
         }
-
+        else if (id == "OverviewTimerEnd")
+        {
+            Q_Tween(0f, "Overview/Other", "HideOverview", true);
+        }
+        else if (id == "OkOverview")
+        {
+            InteractibleElements[10].GetComponent<script_CounterOverview>().StopTimer();
+            CallAction("OverviewTimerEnd");
+        }
     }
 
     private void Q_Tween(float time,string path, string id, bool groupTrigger)
@@ -344,7 +355,7 @@ public class script_UI : MonoBehaviour
         int available = PlayerPopAvailable - (int)totalValue - (int)difference;
         InteractibleElements[5].GetComponent<Text>().text = available.ToString();
         //Store Values
-        GameObject Me = script_GameManager.Instance.GetCurrentPlayer(objectCollector.PLAYERS);
+        GameObject Me = script_GameManager.Instance.GetCurrentPlayer();
         Me.GetComponent<script_Player>().Stats[index + 4] = (int)value;
         //Tooltip
         if (Slider_Untouched && bMouseDown)
@@ -484,6 +495,9 @@ public class script_UI : MonoBehaviour
                 Players.Add(player);
             }
         }
+        //setup overview time
+        float timeToView = Players.Count * 5f;
+        InteractibleElements[10].GetComponent<script_CounterOverview>().SetupTimer(timeToView);
         //calculations
         float[] total = SetRandomAiValues(Players);
         //Cards
@@ -494,6 +508,7 @@ public class script_UI : MonoBehaviour
         GameObject frame;
         Vector3 position = new Vector3(0,0,0);
         int index = 0;
+        float fDelay = 0;
         foreach (GameObject player in Players)
         {
             x = -totalWidth / 2 + (width/2) + index * width;
@@ -506,10 +521,12 @@ public class script_UI : MonoBehaviour
             frame.name = "PlayerFrame";
             SetCardValues(script, frame,total);
             DOTweenAnimation scTween = frame.GetComponent<DOTweenAnimation>();
+            fDelay += index * 0.2f;
             scTween.delay = 0.5f + index * 0.2f;
             scTween.enabled = true;
             index++;
-        } 
+        }
+        Q_Tween(fDelay, "Overview/Other", "ShowOverviewButton", false);
     }
 
     private void SetCardValues(script_Player player, GameObject frame,float[] total)
@@ -550,11 +567,20 @@ public class script_UI : MonoBehaviour
         _text = frame.transform.Find("totDance/Dance").gameObject.GetComponent<Text>();
         _text.text = playerDance.ToString();
         //Set new player stats
-        player.Stats[0] = playerPop;
-        player.Stats[1] += player.Stats[5];
-        player.Stats[2] += FoodCalc[1];
-        player.Stats[3] += RestCalc[3];
-        player.Stats[4] = playerDance;
+        if (player.b_Me)
+        {
+            player.Stats[0] = playerPop;
+            player.Stats[1] += player.Stats[5];
+            player.Stats[2] += FoodCalc[1];
+            player.Stats[3] += RestCalc[3];
+            player.Stats[4] = playerDance;
+            PlayerStatsElements[2].GetComponent<Text>().text = playerPop.ToString();
+            for (int i = 1; i <= 4; i++)
+            {
+                PlayerStatsElements[i + 3].GetComponent<Text>().text = player.Stats[i].ToString();
+            }
+        }
+        
     }
 
     private float[] SetRandomAiValues(List<GameObject> Players)
@@ -574,7 +600,12 @@ public class script_UI : MonoBehaviour
                 int i;
                 for (i = 1; i <= 4; i++)
                 {
-                    random = Random.Range(0, 10);
+                    if (i == 1)
+                        random = Random.Range(4, 12);
+                    else if (i == 3)
+                        random = Random.Range(2, 10);
+                    else
+                        random = Random.Range(0, 10);
                     values[0] += random;
                     values[i] = random;
                 }
@@ -602,7 +633,15 @@ public class script_UI : MonoBehaviour
             Q_Tween(0, "Sliders", "TooltipHide", true);
             Slider_Untouched = true;
         }
-            
+    }
+
+    public void SetupRoundUI(int round, int totPop, int myPop, int danceMin)
+    {
+        PlayerStatsElements[0].GetComponent<Text>().text = round.ToString();
+        PlayerStatsElements[1].GetComponent<Text>().text = totPop.ToString();
+        PlayerStatsElements[2].GetComponent<Text>().text = myPop.ToString();
+        PlayerStatsElements[3].GetComponent<Text>().text = danceMin.ToString();
+
 
     }
 }

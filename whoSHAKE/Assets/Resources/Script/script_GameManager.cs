@@ -8,9 +8,8 @@ public class script_GameManager : script_Singleton<script_GameManager>
     public GameObject objectCollector;
     
     public GameObject[] MainObjects = new GameObject[3]; //0 UI, 1 objectCollector, 2 SoundManager
-
-
-
+    public int[] GlobalValues = new int[4] {0,0,0,0}; // 0 Round 1 Total Population 2 Total Dance required
+    
 
     public void SetupGameObjects(int index, GameObject go)
     {
@@ -22,12 +21,24 @@ public class script_GameManager : script_Singleton<script_GameManager>
             MainObjects[0].GetComponent<script_UI>().SetupObject(MainObjects[1], MainObjects[2]);
         }
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+    public void NextRound()
+    {
+        int round = GlobalValues[0] + 1;
+        int totPop = GetTotalStats(0);
+        int danceMin = (int)( 200f * Mathf.Pow(2, round - 1) );
+        GameObject player = GetCurrentPlayer();
+        int ownPop = player.GetComponent<script_Player>().Stats[0];
+        MainObjects[0].GetComponent<script_UI>().SetupRoundUI(round,totPop,ownPop,danceMin);
+        GlobalValues[0] = round;
+        GlobalValues[1] = totPop;
+        GlobalValues[2] += danceMin; 
+
+    }
     
     
     
@@ -126,7 +137,7 @@ public class script_GameManager : script_Singleton<script_GameManager>
     {
         string[] result = new string[7] { "", "", "", "", "", "", "" }; //0 Combined Dance 1 Player Total Dance 2 Most points name 3 most points points 4 Least points Name 5 Least points points 6 Dance Gain
         script_Player scPlayer = player.GetComponent<script_Player>();
-        int CombinedDance = objectCollector.GetComponent<script_objectCollector>().GlobalValues[1];
+        int CombinedDance = GlobalValues[2];
         int totalDance = scPlayer.Stats[4] + scPlayer.Stats[8];
         result[0] = CombinedDance.ToString();
         result[1] = totalDance.ToString();
@@ -165,8 +176,9 @@ public class script_GameManager : script_Singleton<script_GameManager>
         return result;
     }
 
-    public GameObject GetCurrentPlayer(GameObject[] PLAYERS)
+    public GameObject GetCurrentPlayer()
     {
+        GameObject[] PLAYERS = objectCollector.GetComponent<script_objectCollector>().PLAYERS;
         foreach (GameObject go in PLAYERS)
         {
             if (go.GetComponent<script_Player>().b_Me)

@@ -7,7 +7,7 @@ public class script_objectCollector : MonoBehaviour
 {
     public GameObject[] spownPoints = new GameObject[5];
     public GameObject[] spownNameTag = new GameObject[5];
-    public int[] GlobalValues = new int[4]; // 1 Round 2 Total Dance required
+    //public int[] GlobalValues = new int[4]; // 1 Round 2 Total Dance required
     private List<GameObject> spownAvailable = new List<GameObject>();
 
     private Color[] colors = new Color[5] { Color.red, Color.blue,Color.yellow,Color.green,Color.cyan }; 
