@@ -33,7 +33,7 @@ Material:
         first:
           name: _FaceTex
         second:
-          m_Texture: {fileID: 2800000, guid: 64734c9bc6df32149a0c9cb0b18693e1, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -74,11 +74,11 @@ Material:
       data:
         first:
           name: _FaceDilate
-        second: 0.09
+        second: 0
       data:
         first:
           name: _OutlineWidth
-        second: 0.175
+        second: 0
       data:
         first:
           name: _OutlineSoftness
@@ -106,7 +106,7 @@ Material:
       data:
         first:
           name: _WeightBold
-        second: 0.75
+        second: 0.5
       data:
         first:
           name: _ShaderFlags
@@ -118,11 +118,11 @@ Material:
       data:
         first:
           name: _ScaleRatioB
-        second: 0.7583334
+        second: 0.8333333
       data:
         first:
           name: _ScaleRatioC
-        second: 0.7583334
+        second: 0.8333333
       data:
         first:
           name: _TextureWidth
@@ -170,7 +170,7 @@ Material:
       data:
         first:
           name: _OutlineUVSpeedY
-        second: 0
+        second: -0.16
       data:
         first:
           name: _Bevel

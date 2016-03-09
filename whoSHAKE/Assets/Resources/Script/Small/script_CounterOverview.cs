@@ -24,7 +24,7 @@ public class script_CounterOverview : MonoBehaviour
 
     public void StopTimer()
     {
-        StopCoroutine(Counting());
+        StopAllCoroutines();
     }
 
     IEnumerator Counting()

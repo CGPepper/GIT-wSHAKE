@@ -53,6 +53,7 @@ public class script_UI : MonoBehaviour
     private bool SliderMaxed = false;
     private Color SliderMaxedColor = new Color32(141,141,141,255);
     private List<GameObject> OverviewList = new List<GameObject>();
+    private List<GameObject> OldOverviewCards = new List<GameObject>();
     private bool Slider_Untouched = true;
     private bool bMouseDown = false;
     
@@ -169,10 +170,7 @@ public class script_UI : MonoBehaviour
     IEnumerator delayMethod(float time, DelayedMethod del, string param)
     {
         yield return new WaitForSeconds(time);
-		if (param == "")
-			del ();
-		else
-        	del(param);
+        del(param);
     }
 
     /**
@@ -247,17 +245,22 @@ public class script_UI : MonoBehaviour
             Q_Tween(0f, "Overview/Other", "HideOverview", true);
             script_GameManager.Instance.NextRound();
             Q_Tween(0.5f, "Sliders", "ShowSliders", false);
-			delayMethod (0.7f, DestroyOldCards, "");
+            StartCoroutine(delayMethod(0.7f, CallAction, "kill cards"));
+            SlidersSetup();
         }
         else if (id == "OkOverview")
         {
             InteractibleElements[10].GetComponent<script_CounterOverview>().StopTimer();
             CallAction("OverviewTimerEnd");
         }
+        else if (id == "kill cards")
+        {
+            DestroyOldCards();
+        }
 
     }
 
-	private void DestroyOldCards()
+	public void DestroyOldCards()
 	{
 		foreach (GameObject go in OldOverviewCards) 
 		{
@@ -328,8 +331,7 @@ public class script_UI : MonoBehaviour
 
     public void SlidersSetup()
     {
-        int playerNumber = 0;
-        PlayerPopAvailable = objectCollector.PLAYERS[playerNumber].GetComponent<script_Player>().Stats[0];      
+        PlayerPopAvailable = script_GameManager.Instance.GetCurrentPlayer().GetComponent<script_Player>().Stats[0];      
 
         for (int i = 1; i < 5; i++)
         {
@@ -503,7 +505,7 @@ public class script_UI : MonoBehaviour
         
     }
 
-	private List<GameObject> OldOverviewCards;
+	
     private void SetupPlayerOverview()
     {
         //Get qualified players
