@@ -237,16 +237,27 @@ public class script_UI : MonoBehaviour
         {
             Q_Tween(0, "Sliders", "HideSliders", false);
             SetupPlayerOverview();
+            UpdateTotPopUI();
         }
         else if (id == "OverviewTimerEnd")
         {
             Q_Tween(0f, "Overview/Other", "HideOverview", true);
+            script_GameManager.Instance.NextRound();
+            Q_Tween(0.5f, "Sliders", "ShowSliders", false);
         }
         else if (id == "OkOverview")
         {
             InteractibleElements[10].GetComponent<script_CounterOverview>().StopTimer();
             CallAction("OverviewTimerEnd");
         }
+
+    }
+
+    private void UpdateTotPopUI()
+    {
+        int totPop = script_GameManager.Instance.GetTotalStats(0);
+        PlayerStatsElements[1].GetComponent<Text>().text = totPop.ToString();
+
     }
 
     private void Q_Tween(float time,string path, string id, bool groupTrigger)
