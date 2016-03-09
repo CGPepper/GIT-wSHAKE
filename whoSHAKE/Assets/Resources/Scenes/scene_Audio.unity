@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: vo/shrinkhead/attackorder
+  _eventName: vo/zombie/attackorder
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -794,7 +794,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: vo/shrinkhead/eliminated
+  _eventName: vo/zombie/eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -1697,11 +1697,11 @@ MonoBehaviour:
   - vo/orc/endround
   - vo/orc/generic
   - vo/orc/otherplayer_eliminated
-  - vo/shrinkhead/attackorder
-  - vo/shrinkhead/eliminated
-  - vo/shrinkhead/endround
-  - vo/shrinkhead/generic
-  - vo/shrinkhead/otherplayer_eliminated
+  - vo/zombie/attackorder
+  - vo/zombie/eliminated
+  - vo/zombie/endround
+  - vo/zombie/generic
+  - vo/zombie/otherplayer_eliminated
   - vo/skeletor/attackorder
   - vo/skeletor/eliminated
   - vo/skeletor/endround
@@ -2029,7 +2029,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 691191566}
   m_Layer: 0
-  m_Name: Shrinkhead
+  m_Name: Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2187,7 +2187,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: vo/shrinkhead/generic
+  _eventName: vo/zombie/generic
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -3428,7 +3428,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: vo/shrinkhead/otherplayer_eliminated
+  _eventName: vo/zombie/otherplayer_eliminated
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
@@ -8365,7 +8365,7 @@ MonoBehaviour:
   m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventName: vo/shrinkhead/endround
+  _eventName: vo/zombie/endround
   _eventID: 0
   _overrideEventTriggerAction: 0
   _overrideParameters:
