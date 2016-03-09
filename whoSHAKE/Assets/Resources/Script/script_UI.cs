@@ -169,7 +169,10 @@ public class script_UI : MonoBehaviour
     IEnumerator delayMethod(float time, DelayedMethod del, string param)
     {
         yield return new WaitForSeconds(time);
-        del(param);
+		if (param == "")
+			del ();
+		else
+        	del(param);
     }
 
     /**
@@ -244,6 +247,7 @@ public class script_UI : MonoBehaviour
             Q_Tween(0f, "Overview/Other", "HideOverview", true);
             script_GameManager.Instance.NextRound();
             Q_Tween(0.5f, "Sliders", "ShowSliders", false);
+			delayMethod (0.7f, DestroyOldCards, "");
         }
         else if (id == "OkOverview")
         {
@@ -252,6 +256,14 @@ public class script_UI : MonoBehaviour
         }
 
     }
+
+	private void DestroyOldCards()
+	{
+		foreach (GameObject go in OldOverviewCards) 
+		{
+			Destroy (go);
+		}
+	}
 
     private void UpdateTotPopUI()
     {
@@ -491,7 +503,7 @@ public class script_UI : MonoBehaviour
         
     }
 
-
+	private List<GameObject> OldOverviewCards;
     private void SetupPlayerOverview()
     {
         //Get qualified players
@@ -527,6 +539,7 @@ public class script_UI : MonoBehaviour
             position.Set(x, 0, 0);
             script = player.GetComponent<script_Player>();
             frame = (GameObject)Instantiate(OverviewPrefab, position, Quaternion.identity);
+			OldOverviewCards.Add (frame);
             OverviewList.Add(frame);
             frame.transform.SetParent(InteractibleElements[7].transform,false);
             frame.name = "PlayerFrame";
