@@ -118,11 +118,11 @@ Material:
       data:
         first:
           name: _ScaleRatioB
-        second: 0.6944444
+        second: 0.8333333
       data:
         first:
           name: _ScaleRatioC
-        second: 0.6944444
+        second: 0.8333333
       data:
         first:
           name: _TextureWidth

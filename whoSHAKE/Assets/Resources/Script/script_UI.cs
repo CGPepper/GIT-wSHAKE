@@ -54,6 +54,7 @@ public class script_UI : MonoBehaviour
     private Color SliderMaxedColor = new Color32(141,141,141,255);
     private List<GameObject> OverviewList = new List<GameObject>();
     private List<GameObject> OldOverviewCards = new List<GameObject>();
+    private List<GameObject> EliminationStamps = new List<GameObject>();
     private bool Slider_Untouched = true;
     private bool bMouseDown = false;
     
@@ -533,7 +534,8 @@ public class script_UI : MonoBehaviour
         GameObject frame;
         Vector3 position = new Vector3(0,0,0);
         int index = 0;
-        float fDelay = 0;
+        float fDelay = 0.5f;
+        EliminationStamps.Clear();
         foreach (GameObject player in Players)
         {
             x = -totalWidth / 2 + (width/2) + index * width;
@@ -547,13 +549,23 @@ public class script_UI : MonoBehaviour
             frame.name = "PlayerFrame";
             SetCardValues(script, frame,total);
             DOTweenAnimation scTween = frame.GetComponent<DOTweenAnimation>();
-            fDelay += index * 0.2f;
+            fDelay += 0.2f;
             scTween.delay = 0.5f + index * 0.2f;
             scTween.enabled = true;
             index++;
         }
         Q_Tween(fDelay, "Overview/Other", "ShowOverviewButton", false);
+        if (EliminationStamps.Count > 0)
+        {
+            Debug.Log(EliminationStamps.Count);
+            foreach (GameObject go in EliminationStamps)
+            {
+                fDelay += 0.2f;
+                go.GetComponent<script_Elimination>().ShowStamp(fDelay);
+            }
+        }
     }
+
 
     private void SetCardValues(script_Player player, GameObject frame,float[] total)
     {
@@ -592,21 +604,32 @@ public class script_UI : MonoBehaviour
         _text.text = playerPop.ToString();
         _text = frame.transform.Find("totDance/Dance").gameObject.GetComponent<Text>();
         _text.text = playerDance.ToString();
+        //Elimination
+        if (playerPop <= 0)
+        {
+            player.b_Eliminated = true;
+            GameObject go_Elimination;
+            if (player.Stats[0] + popByFood <= 0)
+            {
+                go_Elimination = frame.transform.Find("Eliminated/Starved").gameObject;
+                EliminationStamps.Add(go_Elimination);
+                Debug.Log("ELIMINATED");
+            }
+        }
         //Set new player stats
+        player.Stats[0] = playerPop;
+        player.Stats[1] += player.Stats[5];
+        player.Stats[2] += FoodCalc[1];
+        player.Stats[3] += RestCalc[3];
+        player.Stats[4] = playerDance;
         if (player.b_Me)
         {
-            player.Stats[0] = playerPop;
-            player.Stats[1] += player.Stats[5];
-            player.Stats[2] += FoodCalc[1];
-            player.Stats[3] += RestCalc[3];
-            player.Stats[4] = playerDance;
             PlayerStatsElements[2].GetComponent<Text>().text = playerPop.ToString();
             for (int i = 1; i <= 4; i++)
             {
                 PlayerStatsElements[i + 3].GetComponent<Text>().text = player.Stats[i].ToString();
             }
         }
-        
     }
 
     private float[] SetRandomAiValues(List<GameObject> Players)
