@@ -197,7 +197,7 @@ public class script_GameManager : script_Singleton<script_GameManager>
         foreach (GameObject go in Players)
         {
             script = go.GetComponent<script_Player>();
-            if (script.b_Active && !script.b_Eliminated)
+            if ((script.b_Active && !script.b_Eliminated) || index == 4)
             {
                 total += script.Stats[index];
             }
