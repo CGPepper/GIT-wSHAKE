@@ -116,6 +116,21 @@ public class script_UI : MonoBehaviour
         StartCoroutine(delayMethod(0.5f,sound_PlayMisc,"0"));
     }
 
+    public void UpdateUiValue(int index)
+    {
+        //If DanceAchieved (PlayerStatsElements)
+        if (index == 8)
+        { 
+            int totDanceCollected = script_GameManager.Instance.GetTotalStats(4);
+            TweenText(8, totDanceCollected, 0.1f);
+        }
+    }
+
+    private void TweenText(int index, int value, float delay)
+    {
+        PlayerStatsElements[index].GetComponent<script_TextValue>().SetupTween(value, delay);
+    }
+
     /**
     Loops
     **/
@@ -175,7 +190,7 @@ public class script_UI : MonoBehaviour
     }
 
     /**
-    Coroutines
+    Call Handler
     **/
 
     public void CallAction(string id)
@@ -192,7 +207,7 @@ public class script_UI : MonoBehaviour
             //StartCoroutine(delayMethod(6.5f, sound_PlayMisc, "7"));
             StartCoroutine(delayMethod(10f, gameObject.transform.Find("UI_Main/frame_GoodLord").gameObject.GetComponent<DOTweenAnimation>().DOPlayById, "GoodLordStart"));
 
-        }
+        } 
         else if (id == "test")
         {
             foreach (GameObject go in initializeUiElements)
