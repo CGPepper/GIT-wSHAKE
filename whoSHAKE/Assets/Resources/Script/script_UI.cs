@@ -238,6 +238,7 @@ public class script_UI : MonoBehaviour
         else if (id == "endSelection")
         {
             Q_Tween(0, "Sliders", "HideSliders", false);
+            Q_Tween(1f, "Frame_UpperTotDance", "HideTotDance", false);
             SetupPlayerOverview();
             UpdateTotPopUI();
         }
@@ -245,6 +246,7 @@ public class script_UI : MonoBehaviour
         {
             Q_Tween(0f, "Overview/Other", "HideOverview", true);
             script_GameManager.Instance.NextRound();
+            Q_Tween(1f, "Frame_UpperTotDanceAchieved", "HideDanceAchieved", false);
             Q_Tween(0.5f, "Sliders", "ShowSliders", false);
             StartCoroutine(delayMethod(0.7f, CallAction, "kill cards"));
             SlidersSetup();
@@ -609,11 +611,15 @@ public class script_UI : MonoBehaviour
         {
             player.b_Eliminated = true;
             GameObject go_Elimination;
-            if (player.Stats[0] + popByFood <= 0)
+            if (player.Stats[0] - player.Stats[5] + popByFood <= 0)
             {
                 go_Elimination = frame.transform.Find("Eliminated/Starved").gameObject;
                 EliminationStamps.Add(go_Elimination);
-                Debug.Log("ELIMINATED");
+            }
+            else if (player.Stats[0] - player.Stats[5] + popByFood + popByRest <= 0)
+            {
+                go_Elimination = frame.transform.Find("Eliminated/Abandoned").gameObject;
+                EliminationStamps.Add(go_Elimination);
             }
         }
         //Set new player stats
