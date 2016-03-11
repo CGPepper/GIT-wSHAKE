@@ -12,7 +12,7 @@ public class script_UI : MonoBehaviour
 
     //[SerializeField]
     //private AudioClip[] voiceSounds = new AudioClip[4];
-    private Material skybox;
+    public Material skybox;
     [SerializeField]
     private GameObject[] initializeUiElements = new GameObject[1];
     [SerializeField]
@@ -53,8 +53,6 @@ public class script_UI : MonoBehaviour
     {
         DOTween.Init();
         script_GameManager.Instance.SetupGameObjects(0, gameObject);
-
-		Fabric.EventManager.Instance.PostEvent ("vo/intro/distance_explosion");
     }
     public void SetupObject(GameObject go_collector,GameObject go_soundmanager)
     {
@@ -188,7 +186,7 @@ public class script_UI : MonoBehaviour
             StartCoroutine(delayMethod(2.2f,sound_PlayMisc,"3")); //play sound
             StartCoroutine(delayMethod(8.5f, gameObject.transform.Find("Fadescreen/text_WhoShake").gameObject.GetComponent<DOTweenAnimation>().DOPlayById, "hideWhoShake")); //start typing text
             StartCoroutine(delayMethod(6.5f, Camera.main.GetComponent<DOTweenAnimation>().DOPlayById, "camera1"));
-            //StartCoroutine(delayMethod(6.5f, sound_PlayMisc, "7"));
+            StartCoroutine(delayMethod(6.5f, sound_PlayMisc, "7"));
             StartCoroutine(delayMethod(10f, gameObject.transform.Find("UI_Main/frame_GoodLord").gameObject.GetComponent<DOTweenAnimation>().DOPlayById, "GoodLordStart"));
 
         } 
