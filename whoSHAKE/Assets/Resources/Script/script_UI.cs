@@ -10,22 +10,8 @@ public class script_UI : MonoBehaviour
     public bool test = true;
     public GameObject[] PlayerStatsElements = new GameObject[8];
 
-
-    [SerializeField]
-    private AudioClip[] wooshes = new AudioClip[6];
-    [SerializeField]
-    private AudioClip[] miscSounds = new AudioClip[2];
     //[SerializeField]
     //private AudioClip[] voiceSounds = new AudioClip[4];
-    [SerializeField]
-    private AudioClip[] clickSounds = new AudioClip[6];
-    [SerializeField]
-    private AudioClip[] buttonSounds = new AudioClip[6];
-    [SerializeField]
-    private AudioClip[] pageSounds = new AudioClip[4];
-    [SerializeField]
-    private AudioClip[] sliderEndSounds = new AudioClip[4];
-    [SerializeField]
     private Material skybox;
     [SerializeField]
     private GameObject[] initializeUiElements = new GameObject[1];
@@ -67,6 +53,8 @@ public class script_UI : MonoBehaviour
     {
         DOTween.Init();
         script_GameManager.Instance.SetupGameObjects(0, gameObject);
+
+		Fabric.EventManager.Instance.PostEvent ("vo/intro/distance_explosion");
     }
     public void SetupObject(GameObject go_collector,GameObject go_soundmanager)
     {
@@ -145,18 +133,17 @@ public class script_UI : MonoBehaviour
     /**
     Playing Sounds
     **/
-    public void sound_PlayMisc(string index)
-    {
-        int i = int.Parse(index);
-        AudioSourceUI.PlayOneShot(miscSounds[i],1f);
-    }
+    public void sound_PlayMisc(string index) { SoundManager.PlayIntro(index); }
 
+	// FIXME
+	// 
     public void sound_PlayVoice(string index)
     {
-        int i = int.Parse(index);
-        AudioSourceVoice.PlayOneShot(miscSounds[i], 1f);
-    }
+		Fabric.EventManager.Instance.PostEvent("vo/intro/save_peasants");
+	}
 
+	/*
+	 * FIXME
     public void sound_Charater(AudioClip[] clipArray) 
     {
         AudioSourceVoice.Stop();
@@ -164,19 +151,16 @@ public class script_UI : MonoBehaviour
         AudioSourceVoice.PlayOneShot(clipArray[rand]);
     
     }
+    */
 
-    //Random generic sounds
-    public void sound_PlayClick()   { sound_Randomizer(clickSounds, 1f); }
-    public void sound_PlayButton()  { sound_Randomizer(buttonSounds, 1f);  }
-    public void sound_PlayPaper()   { sound_Randomizer(pageSounds, 0.5f);  }
-    public void sound_Woosh()       { sound_Randomizer(wooshes, 0.2f);  }
-    public void sound_SliderEnd()  { sound_Randomizer(sliderEndSounds, 0.1f); }
-    
-    private void sound_Randomizer(AudioClip[] clipArray, float volume)
-    {
-        int rand = Random.Range(0, clipArray.Length);
-        AudioSourceUI.PlayOneShot(clipArray[rand],volume);
-    }
+    // FIXME?
+	// lots of references in GameObjects to these functions
+	// lets keep them?
+	public void sound_PlayClick()   { SoundManager.PlayClick(); 	}
+	public void sound_PlayButton()  { SoundManager.PlayButton (); 	}
+	public void sound_PlayPaper()   { SoundManager.PlayPageFlip (); }
+	public void sound_Woosh()       { SoundManager.PlayWhoosh (); 	}
+	public void sound_SliderEnd()   { SoundManager.PlaySlider (); 	}
 
     /**
     Coroutines
@@ -458,7 +442,7 @@ public class script_UI : MonoBehaviour
         {
             GameObject _handle = InteractibleElements[z].transform.Find("Handle Slide Area/Handle").gameObject;
             _handle.GetComponent<Image>().color = color;
-            sound_SliderEnd();
+			sound_SliderEnd();
         }
 
     }

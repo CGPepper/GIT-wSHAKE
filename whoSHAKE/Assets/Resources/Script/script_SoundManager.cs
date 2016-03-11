@@ -24,20 +24,62 @@ public class script_SoundManager : MonoBehaviour
     }
 
     // /////////////////
-    //       Logic
+    //       Methods
     // /////////////////
 
-    //Will receive calls from other scripts saying: I want to play a sound with this ID, so many seconds
-	// FIXME duration? lets talk about that later
-	public void PlaySound(string eventName, GameObject obj = null)
-    { 
-		Fabric.EventManager.Instance.PostEvent (eventName, obj);
-    }
+	public void PlayButton()
+	{
+		Fabric.EventManager.Instance.PostEvent ("ui/button");
+	}
 
+	public void PlaySlider()
+	{
+		Fabric.EventManager.Instance.PostEvent ("ui/slider");
+	}
 
+	public void PlayWhoosh()
+	{
+		Fabric.EventManager.Instance.PostEvent ("ui/whoosh");
+	}
 
+	public void PlayPageFlip()
+	{
+		Fabric.EventManager.Instance.PostEvent ("ui/pageflip");
+	}
+	
+	public void PlayClick ()
+	{
+	}
 
-
-
-
+	public void PlayIntro(string index)
+	{
+		//Fabric.EventManager.Instance.PostEvent ("ui/slider");
+		switch (index) 
+		{
+			case "0":
+			Fabric.EventManager.Instance.PostEvent ("vo/intro/whoshake");
+				break;
+			case "1":
+				Fabric.EventManager.Instance.PostEvent ("vo/intro/whoshake_itsyou1");
+				break;
+			case "2":
+				Fabric.EventManager.Instance.PostEvent ("vo/intro/distance_explosion");
+				break;
+			case "3":
+				Fabric.EventManager.Instance.PostEvent ("vo/intro/whoshake_itsyou2");
+				break;
+			case "4":
+				Fabric.EventManager.Instance.PostEvent ("vo/intro/type");
+				break;
+			case "5":
+				Fabric.EventManager.Instance.PostEvent ("vo/intro/save_peasants");
+				break;
+			case "6":
+				Fabric.EventManager.Instance.PostEvent ("vo/intro/too_kind");
+				break;
+			case "7":
+				Fabric.EventManager.Instance.PostEvent ("vo/intro/camera_intro");
+				break;
+		}
+	}
 }

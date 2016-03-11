@@ -4175,7 +4175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16457b5703409d4e9bcd27a99e5248d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: 1
+  test: 0
   PlayerStatsElements:
   - {fileID: 1026177885}
   - {fileID: 670532328}
@@ -4186,13 +4186,6 @@ MonoBehaviour:
   - {fileID: 506754745}
   - {fileID: 716781081}
   - {fileID: 2097719939}
-  wooshes:
-  - {fileID: 8300000, guid: 7047578659f26644889f894144717d7d, type: 3}
-  - {fileID: 8300000, guid: 640618793d6270c428757cffdf71f56e, type: 3}
-  - {fileID: 8300000, guid: c7888f52ccfd95546a7cad886f446029, type: 3}
-  - {fileID: 8300000, guid: aa4b0441a9e1218448a3df13a96ea277, type: 3}
-  - {fileID: 8300000, guid: 010d54d81a30f66429983a114276d916, type: 3}
-  - {fileID: 8300000, guid: 13ec8187bed54cf44bd90641fa00dd7a, type: 3}
   miscSounds:
   - {fileID: 8300000, guid: 7f49af45d8f12db48bbce7bfe968b857, type: 3}
   - {fileID: 8300000, guid: 2f67d48697fea1f4599296391a537dc1, type: 3}
@@ -4202,30 +4195,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0ca518897537e754ebc5ae355d1659a2, type: 3}
   - {fileID: 8300000, guid: b2a77d7d22ee0a747bf9992d1c06e7a0, type: 3}
   - {fileID: 8300000, guid: 3792d09750b19e34fad40fbfbabfa079, type: 3}
-  clickSounds:
-  - {fileID: 8300000, guid: 86d0ce38a25540141af0964444966373, type: 3}
-  - {fileID: 8300000, guid: 15392e0c40077474082c4b6aebc06a8a, type: 3}
-  - {fileID: 8300000, guid: 9465396e969809e4f88cd166fe81d590, type: 3}
-  - {fileID: 8300000, guid: b175d1c26b6b851489cf94c2146fd766, type: 3}
-  - {fileID: 8300000, guid: 587623afa06f4174998dbb12a1317a98, type: 3}
-  - {fileID: 8300000, guid: fa428aa3f4b547b449b9105f0da630a5, type: 3}
-  buttonSounds:
-  - {fileID: 8300000, guid: b1ffe9008ff7be249b3f3dd23a66ea48, type: 3}
-  - {fileID: 8300000, guid: 5cc565c00480bca4f8488fb0d40c0164, type: 3}
-  - {fileID: 8300000, guid: 3e224b700f4aabb4da5f900889ed0574, type: 3}
-  - {fileID: 8300000, guid: e87ff15f0d5fee8458f3520929722c9f, type: 3}
-  - {fileID: 8300000, guid: 4f4fe95fcae8dea49bc70cd60c9f6972, type: 3}
-  pageSounds:
-  - {fileID: 8300000, guid: ad7492740ee4b674fb6f1028f168a079, type: 3}
-  - {fileID: 8300000, guid: 518c39eebfd8a714a9609c616dec157c, type: 3}
-  - {fileID: 8300000, guid: 74225c67936939b489c4fde11443abcc, type: 3}
-  - {fileID: 8300000, guid: 8351b77e4125ab442be46a0e98339872, type: 3}
-  sliderEndSounds:
-  - {fileID: 8300000, guid: 367171366102169419cd53402710a111, type: 3}
-  - {fileID: 8300000, guid: b2c1bcacda9f13346a75099beae33754, type: 3}
-  - {fileID: 8300000, guid: d0cbc39123bc6814a9a1e315e4819ac3, type: 3}
-  - {fileID: 8300000, guid: 0eea5c30502a5454fbc42710f63bd36d, type: 3}
-  skybox: {fileID: 2100000, guid: 1ce746eab45682a42bbeeea21e016bbc, type: 2}
   initializeUiElements:
   - {fileID: 589094387}
   - {fileID: 1281206423}

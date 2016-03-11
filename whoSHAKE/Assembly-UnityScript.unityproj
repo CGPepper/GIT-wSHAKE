@@ -97,14 +97,14 @@
  <Reference Include="DOTweenPro">
  <HintPath>E:/Game Dev/Projects/Unity3d/GIT-wSHAKE/whoSHAKE/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
  </Reference>
- <Reference Include="Fabric.LoudnessMeter">
- <HintPath>E:/Game Dev/Projects/Unity3d/GIT-wSHAKE/whoSHAKE/Assets/Fabric/Fabric.LoudnessMeter.dll</HintPath>
+ <Reference Include="Fabric.AudioSpline">
+ <HintPath>E:/Game Dev/Projects/Unity3d/GIT-wSHAKE/whoSHAKE/Assets/Fabric/Fabric.AudioSpline.dll</HintPath>
  </Reference>
  <Reference Include="Fabric.Core">
  <HintPath>E:/Game Dev/Projects/Unity3d/GIT-wSHAKE/whoSHAKE/Assets/Fabric/Fabric.Core.dll</HintPath>
  </Reference>
- <Reference Include="Fabric.AudioSpline">
- <HintPath>E:/Game Dev/Projects/Unity3d/GIT-wSHAKE/whoSHAKE/Assets/Fabric/Fabric.AudioSpline.dll</HintPath>
+ <Reference Include="Fabric.LoudnessMeter">
+ <HintPath>E:/Game Dev/Projects/Unity3d/GIT-wSHAKE/whoSHAKE/Assets/Fabric/Fabric.LoudnessMeter.dll</HintPath>
  </Reference>
  <Reference Include="Fabric.ModularSynth">
  <HintPath>E:/Game Dev/Projects/Unity3d/GIT-wSHAKE/whoSHAKE/Assets/Fabric/Fabric.ModularSynth.dll</HintPath>

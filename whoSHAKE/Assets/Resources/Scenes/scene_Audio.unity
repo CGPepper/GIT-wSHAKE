@@ -1682,6 +1682,7 @@ MonoBehaviour:
   - vo/intro/camera_intro
   - vo/intro/distance_explosion
   - vo/intro/save_peasants
+  - vo/intro/too_kind
   - vo/intro/type
   - vo/intro/whoshake
   - vo/intro/whoshake_itsyou1
@@ -1697,11 +1698,6 @@ MonoBehaviour:
   - vo/orc/endround
   - vo/orc/generic
   - vo/orc/otherplayer_eliminated
-  - vo/zombie/attackorder
-  - vo/zombie/eliminated
-  - vo/zombie/endround
-  - vo/zombie/generic
-  - vo/zombie/otherplayer_eliminated
   - vo/skeletor/attackorder
   - vo/skeletor/eliminated
   - vo/skeletor/endround
@@ -1712,6 +1708,11 @@ MonoBehaviour:
   - vo/werewolf/endround
   - vo/werewolf/generic
   - vo/werewolf/otherplayer_eliminated
+  - vo/zombie/attackorder
+  - vo/zombie/eliminated
+  - vo/zombie/endround
+  - vo/zombie/generic
+  - vo/zombie/otherplayer_eliminated
   profiler:
     totalMS: 0
     recordedMS: 0
@@ -3144,6 +3145,154 @@ MonoBehaviour:
     _transitionToSnapshotData:
       _snapshot: 
       _timeToReach: 0
+--- !u!1 &931549427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 931549428}
+  - 114: {fileID: 931549430}
+  - 114: {fileID: 931549429}
+  m_Layer: 0
+  m_Name: tooKind
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &931549428
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 931549427}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2146797393}
+  m_RootOrder: 7
+--- !u!114 &931549429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 931549427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -71199202, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxInstances: 1
+  _stealingBehaviour: 0
+  _minimumPlaybackInterval: 0
+  _overrideParentVolume: 0
+  _volume: 1
+  _volumeRandomization: 0
+  _mute: 0
+  _overrideParentPitch: 0
+  _pitch: 1
+  _pitchRandomization: 0
+  _override2DProperties: 0
+  _pan2D: 0
+  _pan2DRandomization: 0
+  _override3DProperties: 1
+  _priority: 128
+  _panLevel: 0
+  _spreadLevel: 0
+  _dopplerLevel: 1
+  _maxDistance: 500
+  _minDistance: 1
+  _rolloffMode: 0
+  _overrideFadeProperties: 0
+  _fadeInTime: 0
+  _fadeInCurve: 0.5
+  _fadeOutTime: 0
+  _fadeOutCurve: 0.5
+  _reverbZoneMix: 1
+  _overrideBypassProperties: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _overrideAudioMixerGroup: 0
+  _audioMixerGroup: {fileID: 0}
+  _audioBusName: 
+  _overrideAudioBus: 0
+  _overrideMusicTimeSettings: 0
+  _musicTimeSettingsIndex: -1
+  _musicTempo: -1
+  _musicTimeSignatureLower: 0
+  _musicTimeSignatureUpper: 0
+  _probability: 100
+  _multipleInstancesPerGameObject: 1
+  _componentVirtualization: 0
+  _overrideVolumeThreshold: 0
+  _volumeThreshold: 1
+  _virtualizationBehavior: 1
+  _RTPManager:
+    _parameters: []
+    _reference: {fileID: 0}
+  Guid: 
+  _componentHolder: {fileID: 0}
+  _onEventNotifyEventName: 
+  _audioClip: {fileID: 8300000, guid: b2a77d7d22ee0a747bf9992d1c06e7a0, type: 3}
+  _audioClipHandle:
+    _audioClipPath: 
+    _useAudioClipPath: 1
+  _dynamicAudioClipLoading: 0
+  _dynamicAudioClipUnloadDelay: 0
+  _dynamicAsyncAudioClipLoading: 0
+  _audioClipAssetPath: 0
+  _delay: 0
+  _delayInBeats: 0
+  _loop: 0
+  _numLoops: -1
+  _loopMarkersLoaded: 0
+  _useLoopMarkers: 1
+  _dontPlay: 0
+  _dontStopOnDestroy: 0
+  _ignoreVirtualization: 0
+  _randomizePosition: 0
+  _randomizeMinPosition: 0
+  _randomizeMaxPosition: 10
+  _syncWithMusicTime: 0
+  _markers: []
+  _regions: []
+--- !u!114 &931549430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 931549427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1137554331, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventName: vo/intro/too_kind
+  _eventID: 0
+  _overrideEventTriggerAction: 0
+  _overrideParameters:
+    _overrideIncomingEventAction: 0
+    _incomingEventAction: 0
+    _overrideEventAction: 0
+    _type: 0
+    _floatParameter: 1
+    _stringParameter: 
+    _switchPresetData:
+      _sourcePreset: 
+      _targetPreset: 
+    _dspParameterData:
+      _dspType: 0
+      _parameter: 
+      _value: 0
+      _time: 0
+      _curve: 0.5
+    _transitionToSnapshotData:
+      _snapshot: 
+      _timeToReach: 0
 --- !u!1 &958878607
 GameObject:
   m_ObjectHideFlags: 0
@@ -3172,7 +3321,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2146797393}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!114 &958878609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4184,12 +4333,12 @@ MonoBehaviour:
   _stealingBehaviour: 0
   _minimumPlaybackInterval: 0
   _overrideParentVolume: 0
-  _volume: 1
+  _volume: 0.17782794
   _volumeRandomization: 0
   _mute: 0
   _overrideParentPitch: 0
   _pitch: 1
-  _pitchRandomization: 0
+  _pitchRandomization: 0.059463143
   _override2DProperties: 0
   _pan2D: 0
   _pan2DRandomization: 0
@@ -4232,7 +4381,7 @@ MonoBehaviour:
   Guid: 
   _componentHolder: {fileID: 0}
   _onEventNotifyEventName: 
-  _audioClip: {fileID: 0}
+  _audioClip: {fileID: 8300000, guid: 0eea5c30502a5454fbc42710f63bd36d, type: 3}
   _audioClipHandle:
     _audioClipPath: 
     _useAudioClipPath: 1
@@ -4280,7 +4429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eventName: ui/slider
-  _eventID: 0
+  _eventID: -548963140
   _overrideEventTriggerAction: 0
   _overrideParameters:
     _overrideIncomingEventAction: 0
@@ -4329,7 +4478,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2146797393}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!114 &1350291679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6148,7 +6297,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2146797393}
-  m_RootOrder: 5
+  m_RootOrder: 8
 --- !u!114 &1527773142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6157,7 +6306,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1527773140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -71199202, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
+  m_Script: {fileID: 1973381776, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxInstances: 1
@@ -6235,6 +6384,16 @@ MonoBehaviour:
   _syncWithMusicTime: 0
   _markers: []
   _regions: []
+  _playMode: 0
+  _randomWeights: 64000000
+  _shareRandomNoRepeatHistory: 0
+  _audioClips:
+  - {fileID: 8300000, guid: 7f49af45d8f12db48bbce7bfe968b857, type: 3}
+  _looped: 0
+  _delayOnFirstPlay: 0
+  _loopDelay: 0
+  _delayRandomization: 0
+  _delayMaxRandomization: 0
 --- !u!114 &1527773143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6247,7 +6406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eventName: vo/intro/whoshake
-  _eventID: 0
+  _eventID: 368748641
   _overrideEventTriggerAction: 0
   _overrideParameters:
     _overrideIncomingEventAction: 0
@@ -6312,7 +6471,7 @@ MonoBehaviour:
   _stealingBehaviour: 0
   _minimumPlaybackInterval: 0
   _overrideParentVolume: 0
-  _volume: 1
+  _volume: 0.5011872
   _volumeRandomization: 0
   _mute: 0
   _overrideParentPitch: 0
@@ -6360,7 +6519,7 @@ MonoBehaviour:
   Guid: 
   _componentHolder: {fileID: 0}
   _onEventNotifyEventName: 
-  _audioClip: {fileID: 0}
+  _audioClip: {fileID: 8300000, guid: 010d54d81a30f66429983a114276d916, type: 3}
   _audioClipHandle:
     _audioClipPath: 
     _useAudioClipPath: 1
@@ -6410,7 +6569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eventName: ui/whoosh
-  _eventID: 0
+  _eventID: -437950879
   _overrideEventTriggerAction: 0
   _overrideParameters:
     _overrideIncomingEventAction: 0
@@ -7561,7 +7720,7 @@ MonoBehaviour:
   _override3DProperties: 1
   _priority: 128
   _panLevel: 0
-  _spreadLevel: 0
+  _spreadLevel: 360
   _dopplerLevel: 1
   _maxDistance: 500
   _minDistance: 1
@@ -7633,7 +7792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _eventName: vo/intro/distance_explosion
   _eventID: 0
-  _overrideEventTriggerAction: 0
+  _overrideEventTriggerAction: 1
   _overrideParameters:
     _overrideIncomingEventAction: 0
     _incomingEventAction: 0
@@ -8395,6 +8554,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2146797393}
+  - 114: {fileID: 2146797394}
   m_Layer: 0
   m_Name: Intro
   m_TagString: Untagged
@@ -8417,8 +8577,75 @@ Transform:
   - {fileID: 1421587428}
   - {fileID: 1459825064}
   - {fileID: 1508960125}
-  - {fileID: 1527773141}
   - {fileID: 958878608}
   - {fileID: 1350291678}
+  - {fileID: 931549428}
+  - {fileID: 1527773141}
   m_Father: {fileID: 169910923}
   m_RootOrder: 0
+--- !u!114 &2146797394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2146797392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 45463070, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxInstances: 1
+  _stealingBehaviour: 0
+  _minimumPlaybackInterval: 0
+  _overrideParentVolume: 0
+  _volume: 1
+  _volumeRandomization: 0
+  _mute: 0
+  _overrideParentPitch: 0
+  _pitch: 1
+  _pitchRandomization: 0
+  _override2DProperties: 0
+  _pan2D: 0
+  _pan2DRandomization: 0
+  _override3DProperties: 0
+  _priority: 128
+  _panLevel: 1
+  _spreadLevel: 0
+  _dopplerLevel: 1
+  _maxDistance: 500
+  _minDistance: 1
+  _rolloffMode: 0
+  _overrideFadeProperties: 0
+  _fadeInTime: 0
+  _fadeInCurve: 0.5
+  _fadeOutTime: 0
+  _fadeOutCurve: 0.5
+  _reverbZoneMix: 1
+  _overrideBypassProperties: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _overrideAudioMixerGroup: 0
+  _audioMixerGroup: {fileID: 0}
+  _audioBusName: 
+  _overrideAudioBus: 0
+  _overrideMusicTimeSettings: 0
+  _musicTimeSettingsIndex: -1
+  _musicTempo: -1
+  _musicTimeSignatureLower: 0
+  _musicTimeSignatureUpper: 0
+  _probability: 100
+  _multipleInstancesPerGameObject: 1
+  _componentVirtualization: 0
+  _overrideVolumeThreshold: 0
+  _volumeThreshold: 1
+  _virtualizationBehavior: 1
+  _RTPManager:
+    _parameters: []
+    _reference: {fileID: 0}
+  Guid: 
+  _componentHolder: {fileID: 0}
+  _onEventNotifyEventName: 
+  _showInMixerView: 0
+  _targetGroupComponentPath: 
+  _ignoreUnloadUnusedAssets: 1

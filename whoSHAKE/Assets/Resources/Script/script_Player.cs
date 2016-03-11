@@ -82,7 +82,9 @@ public class script_Player : MonoBehaviour {
         if(b_Me)
         {
             AudioClip[] clip = Character.GetComponent<script_Character>().Voices_Generic;
-            go_UI.GetComponent<script_UI>().sound_Charater(clip);
+            
+			// FIXME
+			//go_UI.GetComponent<script_UI>().sound_Charater(clip);
         }        
     }
 
