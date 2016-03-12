@@ -4218,6 +4218,7 @@ MonoBehaviour:
   - {fileID: 1723926069}
   - {fileID: 629119198}
   - {fileID: 203221864}
+  - {fileID: 716504886}
   OverviewPrefab: {fileID: 187200, guid: fc49b8fd3c6e01b4196ccc9422f00238, type: 2}
   clickSoundAllowed: 0
 --- !u!82 &433050211
@@ -7282,6 +7283,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 716504887}
   - 114: {fileID: 716504888}
+  - 114: {fileID: 716504889}
   m_Layer: 5
   m_Name: Slider_Timer
   m_TagString: Untagged
@@ -7357,6 +7359,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &716504889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 716504886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 293fb14c835d2c24facf52ae72cb10c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &716781081
 GameObject:
   m_ObjectHideFlags: 0

@@ -247,6 +247,7 @@ public class script_UI : MonoBehaviour
             Q_Tween(0.5f, "Sliders", "ShowSliders", false);
             StartCoroutine(delayMethod(0.7f, CallAction, "kill cards"));
             SlidersSetup();
+            TimerStart();
         }
         else if (id == "OkOverview")
         {
@@ -461,27 +462,6 @@ public class script_UI : MonoBehaviour
         
     }
 
-
-    IEnumerator SetupCountdown(float time, float step, DelayedMethod loopMethod, DelayedMethod endMethod )
-    {
-        if (step == 0) step = Time.deltaTime; 
-        while (true)
-        {
-            
-            if (time <= 0)
-            {
-                endMethod("");
-                yield break;
-            }
-            else
-            {
-                loopMethod(step.ToString());
-                yield return new WaitForSeconds(step);
-            }
-            time -= step;
-        }
-    }
-
     private void TimerStart()
     {
         
@@ -489,21 +469,11 @@ public class script_UI : MonoBehaviour
         Slider timer = InteractibleElements[6].GetComponent<Slider>();
         timer.maxValue = time;
         timer.value = time;
-        DelayedMethod loopMethod = TimerLoop;
-        DelayedMethod endMethod = TimerEnd;
-        StartCoroutine(SetupCountdown(time, 0f, loopMethod, endMethod));
+        InteractibleElements[11].GetComponent<script_CountdownClock>().SetupCountdown(time,0f);
     }
 
-    private void TimerLoop(string param)
-    {
-        Slider timer = InteractibleElements[6].GetComponent<Slider>();
-        timer.value -= float.Parse(param);
-    }
 
-    private void TimerEnd(string param)
-    { 
-        
-    }
+    
 
 	
     private void SetupPlayerOverview()
@@ -556,7 +526,6 @@ public class script_UI : MonoBehaviour
         Q_Tween(fDelay, "Overview/Other", "ShowOverviewButton", false);
         if (EliminationStamps.Count > 0)
         {
-            Debug.Log(EliminationStamps.Count);
             foreach (GameObject go in EliminationStamps)
             {
                 fDelay += 0.2f;
