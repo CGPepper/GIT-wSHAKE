@@ -207,6 +207,12 @@ MonoBehaviour:
       _path: Assets/Resources/Scenes/scene_Audio.unity
     loadInEditor: 1
     loadMethod: 1
+  - scene:
+      editorAssetGUID: bfe5d9d0a3e2e2043b59dfc1f4fad15d
+      name: scene_Modules
+      _path: Assets/Resources/Scenes/scene_Modules.unity
+    loadInEditor: 1
+    loadMethod: 1
   _thisScenePath: Assets/Resources/Scenes/scene_Main.unity
 --- !u!4 &1649924555
 Transform:

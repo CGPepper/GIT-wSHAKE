@@ -6,19 +6,20 @@ public class script_GameManager : script_Singleton<script_GameManager>
 {
     public float FoodDivider = 10000f;
     public GameObject objectCollector;
-    
-    public GameObject[] MainObjects = new GameObject[3]; //0 UI, 1 objectCollector, 2 SoundManager
-    public int[] GlobalValues = new int[4] {0,0,0,0}; // 0 Round 1 Total Population 2 Total Dance required
+
+    public GameObject[] MainObjects = new GameObject[4]; //0 UI, 1 objectCollector, 2 SoundManager 3 Module Manager
+    public int[] GlobalValues = new int[3] {0,0,0}; // 0 Round 1 Total Population 2 Total Dance required 
     
 
     public void SetupGameObjects(int index, GameObject go)
     {
         MainObjects[index] = go;
-        if (MainObjects[0] && MainObjects[1] && MainObjects[2])
+        if (MainObjects[0] && MainObjects[1] && MainObjects[2] && MainObjects[3])
         {
             MainObjects[1].GetComponent<script_objectCollector>().SetupObject(MainObjects[0],MainObjects[2]);
             MainObjects[2].GetComponent<script_SoundManager>().SetupObject(MainObjects[0], MainObjects[1]);
-            MainObjects[0].GetComponent<script_UI>().SetupObject(MainObjects[1], MainObjects[2]);
+            MainObjects[0].GetComponent<script_UI>().SetupObject(MainObjects[1], MainObjects[2],MainObjects[3]);
+            MainObjects[3].GetComponent<script_ModuleManager>().SetupObject(MainObjects[0], MainObjects[1]);
         }
     }
 

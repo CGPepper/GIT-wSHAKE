@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/Resources/Scenes/scene_UI.unity
   - enabled: 1
     path: Assets/Resources/Scenes/scene_Audio.unity
+  - enabled: 1
+    path: Assets/Resources/Scenes/scene_Modules.unity

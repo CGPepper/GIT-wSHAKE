@@ -23,17 +23,19 @@ public class script_UI : MonoBehaviour
     private GameObject[] NrPlayersButton = new GameObject[4];
     [SerializeField]
     private GameObject[] InteractibleElements = new GameObject[10];
+    public GameObject[] UI_Elements { get { return InteractibleElements; } }
     [SerializeField]
     private GameObject OverviewPrefab;
+
     
-   
     private float sky_rotation = 300f;
     private AudioSource AudioSourceUI;
     private AudioSource AudioSourceVoice;
     delegate void DelayedMethod(string id); //used to delay sound playback with a coroutine
     private DelayedMethod tempDelegate;
-    private script_objectCollector objectCollector;
-    private script_SoundManager SoundManager;
+    private script_objectCollector scObjectCollector;
+    private script_SoundManager scSoundManager;
+    private script_ModuleManager scModuleManager;
     private int playerChooseState = 0;
     private int PlayerPopAvailable = 0;
     private bool SliderMaxed = false;
@@ -54,10 +56,11 @@ public class script_UI : MonoBehaviour
         DOTween.Init();
         script_GameManager.Instance.SetupGameObjects(0, gameObject);
     }
-    public void SetupObject(GameObject go_collector,GameObject go_soundmanager)
+    public void SetupObject(GameObject go_collector,GameObject go_soundmanager,GameObject go_moduleManager)
     {
-        objectCollector = go_collector.GetComponent<script_objectCollector>();
-        SoundManager = go_soundmanager.GetComponent<script_SoundManager>();
+        scObjectCollector = go_collector.GetComponent<script_objectCollector>();
+        scSoundManager = go_soundmanager.GetComponent<script_SoundManager>();
+        scModuleManager = go_moduleManager.GetComponent<script_ModuleManager>();
         AudioSourceUI = GetComponent<AudioSource>();
         AudioSourceVoice = gameObject.transform.Find("VoiceSource").GetComponent<AudioSource>();
         if (!test)
@@ -131,7 +134,7 @@ public class script_UI : MonoBehaviour
     /**
     Playing Sounds
     **/
-    public void sound_PlayMisc(string index) { SoundManager.PlayIntro(index); }
+    public void sound_PlayMisc(string index) { scSoundManager.PlayIntro(index); }
 
 	// FIXME
 	// 
@@ -154,11 +157,11 @@ public class script_UI : MonoBehaviour
     // FIXME?
 	// lots of references in GameObjects to these functions
 	// lets keep them?
-	public void sound_PlayClick()   { SoundManager.PlayClick(); 	}
-	public void sound_PlayButton()  { SoundManager.PlayButton (); 	}
-	public void sound_PlayPaper()   { SoundManager.PlayPageFlip (); }
-	public void sound_Woosh()       { SoundManager.PlayWhoosh (); 	}
-	public void sound_SliderEnd()   { SoundManager.PlaySlider (); 	}
+	public void sound_PlayClick()   { scSoundManager.PlayClick(); 	}
+	public void sound_PlayButton()  { scSoundManager.PlayButton (); 	}
+	public void sound_PlayPaper()   { scSoundManager.PlayPageFlip (); }
+	public void sound_Woosh()       { scSoundManager.PlayWhoosh (); 	}
+	public void sound_SliderEnd()   { scSoundManager.PlaySlider (); 	}
 
     /**
     Coroutines
@@ -242,23 +245,30 @@ public class script_UI : MonoBehaviour
         else if (id == "OverviewTimerEnd")
         {
             Q_Tween(0f, "Overview/Other", "HideOverview", true);
-            script_GameManager.Instance.NextRound();
-            Q_Tween(1f, "Frame_UpperTotDanceAchieved", "HideDanceAchieved", false);
-            Q_Tween(0.5f, "Sliders", "ShowSliders", false);
+            
+            
             StartCoroutine(delayMethod(0.7f, CallAction, "kill cards"));
-            SlidersSetup();
-            TimerStart();
+            
         }
         else if (id == "OkOverview")
         {
             InteractibleElements[10].GetComponent<script_CounterOverview>().StopTimer();
             CallAction("OverviewTimerEnd");
+            scModuleManager.OverviewModule("Next Round");
         }
         else if (id == "kill cards")
         {
             DestroyOldCards();
         }
 
+    }
+
+    public void ShowSlider()
+    {
+        SlidersSetup();
+        TimerStart();
+        Q_Tween(1f, "Frame_UpperTotDanceAchieved", "HideDanceAchieved", false);
+        Q_Tween(0.5f, "Sliders", "ShowSliders", false);
     }
 
 	public void DestroyOldCards()
@@ -301,11 +311,11 @@ public class script_UI : MonoBehaviour
     //Selecting number of (AI) players
     public void SetPlayers(int number)
     {
-        objectCollector.ShufflePlayerLocation();
-        objectCollector.ShuffleCharacters();
+        scObjectCollector.ShufflePlayerLocation();
+        scObjectCollector.ShuffleCharacters();
         //assign names to hud
-        List<string> names = objectCollector.InitAIPlayers();
-        GameObject[] players = objectCollector.PLAYERS;
+        List<string> names = scObjectCollector.InitAIPlayers();
+        GameObject[] players = scObjectCollector.PLAYERS;
         for (int i = 0; i < 5; i++)
         {
             script_Player script = players[i].GetComponent<script_Player>();
@@ -456,7 +466,7 @@ public class script_UI : MonoBehaviour
         {
             _slider = InteractibleElements[i];
             tempValue = _slider.GetComponent<Slider>().value;
-            objectCollector.PLAYERS[playerNumber].GetComponent<script_Player>().SetValues(i, values[i]);
+            scObjectCollector.PLAYERS[playerNumber].GetComponent<script_Player>().SetValues(i, values[i]);
             values[i] = tempValue;
         }
         
@@ -479,7 +489,7 @@ public class script_UI : MonoBehaviour
     private void SetupPlayerOverview()
     {
         //Get qualified players
-        GameObject[] PLAYERS = objectCollector.PLAYERS;
+        GameObject[] PLAYERS = scObjectCollector.PLAYERS;
         List<GameObject> Players = new List<GameObject>();
         script_Player script;
         foreach (GameObject player in PLAYERS)
