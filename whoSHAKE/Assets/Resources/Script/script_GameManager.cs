@@ -31,7 +31,7 @@ public class script_GameManager : script_Singleton<script_GameManager>
     {
         int round = GlobalValues[0] + 1;
         int totPop = GetTotalStats(0);
-        int danceMin = (int)( 200f * Mathf.Pow(2, round - 1) );
+        int danceMin = GlobalValues[2] + (int)( 200f * Mathf.Pow(2, round - 1) );
         GameObject player = GetCurrentPlayer();
         int ownPop = player.GetComponent<script_Player>().Stats[0];
         MainObjects[0].GetComponent<script_UI>().SetupRoundUI(round,totPop,ownPop,danceMin);

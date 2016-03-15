@@ -242,19 +242,10 @@ public class script_UI : MonoBehaviour
             SetupPlayerOverview();
             UpdateTotPopUI();
         }
-        else if (id == "OverviewTimerEnd")
-        {
-            Q_Tween(0f, "Overview/Other", "HideOverview", true);
-            
-            
-            StartCoroutine(delayMethod(0.7f, CallAction, "kill cards"));
-            
-        }
         else if (id == "OkOverview")
         {
-            InteractibleElements[10].GetComponent<script_CounterOverview>().StopTimer();
-            CallAction("OverviewTimerEnd");
-            scModuleManager.OverviewModule("Next Round");
+            scModuleManager.OverviewModule("Hide");
+            scModuleManager.SliderModule("Show");
         }
         else if (id == "kill cards")
         {
@@ -269,6 +260,12 @@ public class script_UI : MonoBehaviour
         TimerStart();
         Q_Tween(1f, "Frame_UpperTotDanceAchieved", "HideDanceAchieved", false);
         Q_Tween(0.5f, "Sliders", "ShowSliders", false);
+    }
+
+    public void HideOverview()
+    {
+        Q_Tween(0f, "Overview/Other", "HideOverview", true);
+        StartCoroutine(delayMethod(0.7f, CallAction, "kill cards"));
     }
 
 	public void DestroyOldCards()

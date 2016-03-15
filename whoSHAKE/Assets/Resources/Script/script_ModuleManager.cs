@@ -30,7 +30,6 @@ public class script_ModuleManager : MonoBehaviour
         if (condition == "Show")
         {
             script_GameManager.Instance.NextRound();
-
             sc_UI.ShowSlider();
         }
     }
@@ -43,6 +42,7 @@ public class script_ModuleManager : MonoBehaviour
         if (condition == "Hide")
         {
             sc_UI.UI_Elements[10].GetComponent<script_CounterOverview>().StopTimer();
+            sc_UI.HideOverview();
         }
     }
 

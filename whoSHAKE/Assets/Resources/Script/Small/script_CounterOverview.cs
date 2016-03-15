@@ -35,7 +35,7 @@ public class script_CounterOverview : MonoBehaviour
             TimeLeft -= 1;
             script.text = TimeLeft.ToString();
         }
-        go_UI.GetComponent<script_UI>().CallAction("OverviewTimerEnd");
+        go_UI.GetComponent<script_UI>().CallAction("OkOverview");
     }
 
 
