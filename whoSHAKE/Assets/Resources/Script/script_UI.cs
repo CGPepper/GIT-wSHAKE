@@ -174,9 +174,9 @@ public class script_UI : MonoBehaviour
         del(param);
     }
 
-    /**
-    Call Handler
-    **/
+    /* ***********************************************************
+    ************************ UI CALL HANDLER *********************
+    *********************************************************** */
 
     public void CallAction(string id)
     {
@@ -230,17 +230,15 @@ public class script_UI : MonoBehaviour
             Q_Tween(0, "UI_Main/frame_PlayerSelect", "playerSelectOut", false);
             Q_Tween(0, "Frame_Upper", "ShowFrames", true);
             Q_Tween(0.3f, "Button_Settings", "ShowSettings", false);
-            Q_Tween(1f, "Sliders", "ShowSliders", false);
+            //Q_Tween(1f, "Sliders", "ShowSliders", false);
             Q_Tween(1f, "Frame_UpperTotDance", "ShowTotDance", false);
-            TimerStart();
-            script_GameManager.Instance.NextRound();
+            //TimerStart();
+            //script_GameManager.Instance.NextRound();
+            scModuleManager.SliderModule("Show");
         }
         else if (id == "endSelection")
         {
-            Q_Tween(0, "Sliders", "HideSliders", false);
-            Q_Tween(1f, "Frame_UpperTotDance", "HideTotDance", false);
-            SetupPlayerOverview();
-            UpdateTotPopUI();
+            scModuleManager.OverviewModule("Show");
         }
         else if (id == "OkOverview")
         {
@@ -253,6 +251,8 @@ public class script_UI : MonoBehaviour
         }
 
     }
+
+    
 
     public void ShowSlider()
     {
@@ -276,12 +276,7 @@ public class script_UI : MonoBehaviour
 		}
 	}
 
-    private void UpdateTotPopUI()
-    {
-        int totPop = script_GameManager.Instance.GetTotalStats(0);
-        PlayerStatsElements[1].GetComponent<Text>().text = totPop.ToString();
-
-    }
+    
 
     private void Q_Tween(float time,string path, string id, bool groupTrigger)
     {
@@ -471,75 +466,15 @@ public class script_UI : MonoBehaviour
 
     private void TimerStart()
     {
-        
-        float time = 60f;
+
+        float time = script_GameManager.Instance.CalculateRoundTime();
         Slider timer = InteractibleElements[6].GetComponent<Slider>();
         timer.maxValue = time;
         timer.value = time;
         InteractibleElements[11].GetComponent<script_CountdownClock>().SetupCountdown(time,0f);
     }
-
-
-    
-
 	
-    private void SetupPlayerOverview()
-    {
-        //Get qualified players
-        GameObject[] PLAYERS = scObjectCollector.PLAYERS;
-        List<GameObject> Players = new List<GameObject>();
-        script_Player script;
-        foreach (GameObject player in PLAYERS)
-        {
-            script = player.GetComponent<script_Player>();
-            if (script.b_Active && !script.b_Eliminated)
-            {
-                Players.Add(player);
-            }
-        }
-        //setup overview time
-        float timeToView = Players.Count * 5f;
-        InteractibleElements[10].GetComponent<script_CounterOverview>().SetupTimer(timeToView);
-        //calculations
-        float[] total = SetRandomAiValues(Players);
-        //Cards
-        int playersCount = Players.Count;
-        float width = 198f;
-        float totalWidth = width *(float)playersCount;
-        float x = 0f;
-        GameObject frame;
-        Vector3 position = new Vector3(0,0,0);
-        int index = 0;
-        float fDelay = 0.5f;
-        EliminationStamps.Clear();
-        foreach (GameObject player in Players)
-        {
-            x = -totalWidth / 2 + (width/2) + index * width;
-            
-            position.Set(x, 0, 0);
-            script = player.GetComponent<script_Player>();
-            frame = (GameObject)Instantiate(OverviewPrefab, position, Quaternion.identity);
-			OldOverviewCards.Add (frame);
-            OverviewList.Add(frame);
-            frame.transform.SetParent(InteractibleElements[7].transform,false);
-            frame.name = "PlayerFrame";
-            SetCardValues(script, frame,total);
-            DOTweenAnimation scTween = frame.GetComponent<DOTweenAnimation>();
-            fDelay += 0.2f;
-            scTween.delay = 0.5f + index * 0.2f;
-            scTween.enabled = true;
-            index++;
-        }
-        Q_Tween(fDelay, "Overview/Other", "ShowOverviewButton", false);
-        if (EliminationStamps.Count > 0)
-        {
-            foreach (GameObject go in EliminationStamps)
-            {
-                fDelay += 0.2f;
-                go.GetComponent<script_Elimination>().ShowStamp(fDelay);
-            }
-        }
-    }
+    
 
 
     private void SetCardValues(script_Player player, GameObject frame,float[] total)
@@ -672,4 +607,79 @@ public class script_UI : MonoBehaviour
 
 
     }
+
+    /* ***********************************************************
+    ************************ Overview Module *********************
+    *********************************************************** */
+    public void UpdateTotPopUI()
+    {
+        int totPop = script_GameManager.Instance.GetTotalStats(0);
+        PlayerStatsElements[1].GetComponent<Text>().text = totPop.ToString();
+
+    }
+
+    public void ShowOverview()
+    {
+        Q_Tween(0, "Sliders", "HideSliders", false);
+        Q_Tween(1f, "Frame_UpperTotDance", "HideTotDance", false);
+    }
+
+    public void SetupPlayerOverview()
+    {
+        //Get qualified players
+        GameObject[] PLAYERS = scObjectCollector.PLAYERS;
+        List<GameObject> Players = new List<GameObject>();
+        script_Player script;
+        foreach (GameObject player in PLAYERS)
+        {
+            script = player.GetComponent<script_Player>();
+            if (script.b_Active && !script.b_Eliminated)
+            {
+                Players.Add(player);
+            }
+        }
+        //setup overview time
+        float timeToView = Players.Count * 5f;
+        InteractibleElements[10].GetComponent<script_CounterOverview>().SetupTimer(timeToView);
+        //calculations
+        float[] total = SetRandomAiValues(Players);
+        //Cards
+        int playersCount = Players.Count;
+        float width = 198f;
+        float totalWidth = width * (float)playersCount;
+        float x = 0f;
+        GameObject frame;
+        Vector3 position = new Vector3(0, 0, 0);
+        int index = 0;
+        float fDelay = 0.5f;
+        EliminationStamps.Clear();
+        foreach (GameObject player in Players)
+        {
+            x = -totalWidth / 2 + (width / 2) + index * width;
+
+            position.Set(x, 0, 0);
+            script = player.GetComponent<script_Player>();
+            frame = (GameObject)Instantiate(OverviewPrefab, position, Quaternion.identity);
+            OldOverviewCards.Add(frame);
+            OverviewList.Add(frame);
+            frame.transform.SetParent(InteractibleElements[7].transform, false);
+            frame.name = "PlayerFrame";
+            SetCardValues(script, frame, total);
+            DOTweenAnimation scTween = frame.GetComponent<DOTweenAnimation>();
+            fDelay += 0.2f;
+            scTween.delay = 0.5f + index * 0.2f;
+            scTween.enabled = true;
+            index++;
+        }
+        Q_Tween(fDelay, "Overview/Other", "ShowOverviewButton", false);
+        if (EliminationStamps.Count > 0)
+        {
+            foreach (GameObject go in EliminationStamps)
+            {
+                fDelay += 0.2f;
+                go.GetComponent<script_Elimination>().ShowStamp(fDelay);
+            }
+        }
+    }
+
 }

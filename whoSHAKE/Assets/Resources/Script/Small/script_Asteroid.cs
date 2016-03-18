@@ -8,6 +8,9 @@ public class script_Asteroid : MonoBehaviour
 
     public void Q_Move(int WayPointIndex, float duration, bool queue)
     {
-        transform.DOMove(WayPoints[WayPointIndex].transform.position, duration);
+        DOTween.Kill(gameObject.transform);
+          transform.position = WayPoints[1].transform.position;
+        transform.DOMove(WayPoints[WayPointIndex].transform.position, duration*2);
+        Debug.Log("Moving asteroid over " + duration + " seconds");
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class script_objectCollector : MonoBehaviour 
 {
+    public GameObject[] InteractibleObjects = new GameObject[3];
     public GameObject[] spownPoints = new GameObject[5];
     public GameObject[] spownNameTag = new GameObject[5];
     //public int[] GlobalValues = new int[4]; // 1 Round 2 Total Dance required

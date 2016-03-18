@@ -8,7 +8,7 @@ public class script_GameManager : script_Singleton<script_GameManager>
     public GameObject objectCollector;
 
     public GameObject[] MainObjects = new GameObject[4]; //0 UI, 1 objectCollector, 2 SoundManager 3 Module Manager
-    public int[] GlobalValues = new int[3] {0,0,0}; // 0 Round 1 Total Population 2 Total Dance required 
+    public int[] GlobalValues = new int[4] {0,0,0,0}; // 0 Round 1 Total Population 2 Total Dance required 3 Round Time
     
 
     public void SetupGameObjects(int index, GameObject go)
@@ -18,13 +18,10 @@ public class script_GameManager : script_Singleton<script_GameManager>
         {
             MainObjects[1].GetComponent<script_objectCollector>().SetupObject(MainObjects[0],MainObjects[2]);
             MainObjects[2].GetComponent<script_SoundManager>().SetupObject(MainObjects[0], MainObjects[1]);
-            MainObjects[0].GetComponent<script_UI>().SetupObject(MainObjects[1], MainObjects[2],MainObjects[3]);
             MainObjects[3].GetComponent<script_ModuleManager>().SetupObject(MainObjects[0], MainObjects[1]);
+            MainObjects[0].GetComponent<script_UI>().SetupObject(MainObjects[1], MainObjects[2], MainObjects[3]);
         }
     }
-
-
-
 
 
     public void NextRound()
@@ -40,8 +37,19 @@ public class script_GameManager : script_Singleton<script_GameManager>
         GlobalValues[2] += danceMin; 
 
     }
-    
-    
+
+    public float CalculateRoundTime()
+    {
+        int time = 10;
+        List<GameObject> players = GetActivePlayers();
+        foreach (GameObject player in players)
+        {
+            time += 10;
+        }
+        GlobalValues[3] = time;
+        Debug.Log("Round time is " + time);
+        return time;
+    }
     
    //-----------------------------
     //Calculations
