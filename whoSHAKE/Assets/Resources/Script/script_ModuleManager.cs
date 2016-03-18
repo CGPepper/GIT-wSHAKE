@@ -31,8 +31,11 @@ public class script_ModuleManager : MonoBehaviour
         {
             script_GameManager.Instance.NextRound();
             sc_UI.ShowSlider();
-            float roundTIme = script_GameManager.Instance.GlobalValues[3];
-            sc_ObjectCollector.InteractibleObjects[0].GetComponent<script_Asteroid>().Q_Move(2, roundTIme, false);
+            sc_ObjectCollector.InteractibleObjects[0].GetComponent<script_Asteroid>().Reset();
+        }
+        else if (condition == "Hide")
+        { 
+            
         }
     }
 
@@ -46,11 +49,12 @@ public class script_ModuleManager : MonoBehaviour
             sc_UI.UI_Elements[10].GetComponent<script_CounterOverview>().StopTimer();
             sc_UI.HideOverview();
         }
-        if (condition == "Show")
+        else if (condition == "Show")
         {
             sc_UI.ShowOverview();
             sc_UI.SetupPlayerOverview();
             sc_UI.UpdateTotPopUI();
+            sc_ObjectCollector.InteractibleObjects[0].GetComponent<script_Asteroid>().Miss();
         }
     }
 
