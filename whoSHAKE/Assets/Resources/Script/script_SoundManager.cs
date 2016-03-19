@@ -27,6 +27,24 @@ public class script_SoundManager : MonoBehaviour
     //       Methods
     // /////////////////
 
+    public void PlayUI(string param)
+    {
+        param = "ui/" + param;   
+    }
+
+    public void Play3D(string param, GameObject go)
+    {
+        param = "3D/" + param;
+    }
+
+    public void PlayVO(string CharType, string SoundGroup)
+    {
+        string sRef = "vo/" + CharType + "/" + SoundGroup;
+    }
+
+    // /////////////////
+    //       Old Methods
+    // /////////////////
 	public void PlayButton()
 	{
 		Fabric.EventManager.Instance.PostEvent ("ui/button");
