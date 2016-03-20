@@ -27,16 +27,21 @@ public class script_Preparation : MonoBehaviour
         { 
             case 1:
                 SetComponent("ROUND", Round.ToString());
+                Camera.main.GetComponent<script_Camera>().SetupPrep(3f);
                 break;
             case 2:
                 SetComponent("TOTAL DANCE", TotDance.ToString());
+                Camera.main.GetComponent<script_Camera>().SetZoomPoints(2f);
                 break;
             case 3:
                 SetComponent("TIME",Time + "s");
+                Camera.main.GetComponent<script_Camera>().SetZoomPoints(2f);
                 break;
         }
-        float tweenTime = 0.3f;
-        Elements[0].transform.DOScale(1f, tweenTime).SetEase(Ease.Linear).OnComplete(Hold);
+        float tweenTime = 0.5f;
+        Elements[0].transform.DOScale(1f, tweenTime).SetEase(Ease.OutBack).OnComplete(Hold);
+        Elements[0].GetComponent<CanvasGroup>().alpha = 0;
+        Elements[0].GetComponent<CanvasGroup>().DOFade(1, tweenTime);
     }
 
 
@@ -50,12 +55,13 @@ public class script_Preparation : MonoBehaviour
 
     private void Hold()
     {
-        Elements[0].transform.DOScale(1.1f,2f).SetEase(Ease.Linear).OnComplete(Out);
+        Elements[0].transform.DOScale(1.2f,2f).SetEase(Ease.Linear).OnComplete(Out);
     }
 
     private void Out()
     {
         Elements[0].transform.DOScale(10, 0.3f).SetEase(Ease.Linear).OnComplete(Reset);
+        Elements[0].GetComponent<CanvasGroup>().DOFade(0, 0.3f);
     }
 
     private void Reset()
@@ -65,6 +71,11 @@ public class script_Preparation : MonoBehaviour
         {
             ShowIndex++;
             Show(ShowIndex);
+        }
+        else
+        {
+            Camera.main.GetComponent<script_Camera>().SetNeutral(2f);
+            script_GameManager.Instance.MainObjects[3].GetComponent<script_ModuleManager>().PrepModule("Hide");
         }
         
     }

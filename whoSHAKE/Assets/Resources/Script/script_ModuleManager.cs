@@ -29,10 +29,8 @@ public class script_ModuleManager : MonoBehaviour
     {
         if (condition == "Show")
         {
-            script_GameManager.Instance.NextRound();
             sc_UI.ShowSlider();
             sc_ObjectCollector.InteractibleObjects[0].GetComponent<script_Asteroid>().Reset();
-            sc_UI.UI_Elements[12].GetComponent<script_Preparation>().SetupPreparations();
         }
         else if (condition == "Hide")
         { 
@@ -49,6 +47,8 @@ public class script_ModuleManager : MonoBehaviour
         {
             sc_UI.UI_Elements[10].GetComponent<script_CounterOverview>().StopTimer();
             sc_UI.HideOverview();
+            sc_UI.HideUIFrame();
+            PrepModule("Show");
         }
         else if (condition == "Show")
         {
@@ -66,8 +66,15 @@ public class script_ModuleManager : MonoBehaviour
     public void PrepModule(string condition)
     {
         if (condition == "Show")
-        { 
+        {
+            script_GameManager.Instance.NextRound();
+            sc_UI.UI_Elements[12].GetComponent<script_Preparation>().SetupPreparations();
             
+        }
+        if (condition == "Hide")
+        {
+            sc_UI.ShowUIFrames();
+            SliderModule("Show");
         }
     }
 

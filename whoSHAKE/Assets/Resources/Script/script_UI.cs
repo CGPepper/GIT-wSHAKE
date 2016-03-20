@@ -225,14 +225,13 @@ public class script_UI : MonoBehaviour
         }
         else if (id == "StartSingle")
         {
+            
             Q_Tween(0, "UI_Main/frame_PlayerSelect", "playerSelectOut", false);
-            Q_Tween(0, "Frame_Upper", "ShowFrames", true);
             Q_Tween(0.3f, "Button_Settings", "ShowSettings", false);
-            //Q_Tween(1f, "Sliders", "ShowSliders", false);
-            Q_Tween(1f, "Frame_UpperTotDance", "ShowTotDance", false);
-            //TimerStart();
-            //script_GameManager.Instance.NextRound();
-            scModuleManager.SliderModule("Show");
+            /**
+            
+             **/
+            scModuleManager.PrepModule("Show");
         }
         else if (id == "endSelection")
         {
@@ -241,7 +240,7 @@ public class script_UI : MonoBehaviour
         else if (id == "OkOverview")
         {
             scModuleManager.OverviewModule("Hide");
-            scModuleManager.SliderModule("Show");
+            //scModuleManager.SliderModule("Show");
         }
         else if (id == "kill cards")
         {
@@ -250,14 +249,23 @@ public class script_UI : MonoBehaviour
 
     }
 
-    
+    public void ShowUIFrames()
+    {
+        Q_Tween(1, "Frame_Upper", "ShowFrames", true);
+        Q_Tween(2f, "Frame_Upper/Frame_UpperTotDance", "ShowTotDance", false);
+    }
+
+    public void HideUIFrame()
+    {
+        Q_Tween(1, "Frame_Upper", "HideFrames", true);
+    }
 
     public void ShowSlider()
     {
         SlidersSetup();
         TimerStart();
-        Q_Tween(1f, "Frame_UpperTotDanceAchieved", "HideDanceAchieved", false);
-        Q_Tween(0.5f, "Sliders", "ShowSliders", false);
+        Q_Tween(2f, "Frame_Upper/Frame_UpperTotDanceAchieved", "HideDanceAchieved", false);
+        Q_Tween(1.5f, "Sliders", "ShowSliders", false);
     }
 
     public void HideOverview()
@@ -619,7 +627,7 @@ public class script_UI : MonoBehaviour
     public void ShowOverview()
     {
         Q_Tween(0, "Sliders", "HideSliders", false);
-        Q_Tween(1f, "Frame_UpperTotDance", "HideTotDance", false);
+        Q_Tween(1f, "Frame_Upper/Frame_UpperTotDance", "HideTotDance", false);
     }
 
     public void SetupPlayerOverview()
