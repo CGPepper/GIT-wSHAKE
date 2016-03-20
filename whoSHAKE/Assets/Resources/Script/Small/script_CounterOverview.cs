@@ -4,7 +4,6 @@ using TMPro;
 
 public class script_CounterOverview : MonoBehaviour 
 {
-    private float TimeMax;
     private float TimeLeft;
     private TextMeshProUGUI script;
     public GameObject go_UI;
@@ -16,7 +15,6 @@ public class script_CounterOverview : MonoBehaviour
 
     public void SetupTimer(float time)
     {
-        TimeMax = time;
         TimeLeft = time;
         StartCoroutine(Counting());
 

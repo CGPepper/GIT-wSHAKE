@@ -4219,6 +4219,7 @@ MonoBehaviour:
   - {fileID: 629119198}
   - {fileID: 203221864}
   - {fileID: 716504886}
+  - {fileID: 830794847}
   OverviewPrefab: {fileID: 187200, guid: fc49b8fd3c6e01b4196ccc9422f00238, type: 2}
   clickSoundAllowed: 0
 --- !u!1 &439089386
@@ -15176,7 +15177,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10.9, y: 76.4}
+  m_AnchoredPosition: {x: 0.0000019073486, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1556402483
@@ -18043,7 +18044,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -139.5}
+  m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1860910966
@@ -18864,7 +18865,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.8, y: -51.8}
+  m_AnchoredPosition: {x: -0.000012397766, y: 16}
   m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2027021215

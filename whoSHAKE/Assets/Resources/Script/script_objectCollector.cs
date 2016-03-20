@@ -27,7 +27,7 @@ public class script_objectCollector : MonoBehaviour
     private GameObject prefab_PLayer;
     [SerializeField]
     private GameObject go_UI;
-    private GameObject go_SoundManager;
+    //private GameObject go_SoundManager;
 
 	// Use this for initialization
 	void Awake()
@@ -38,7 +38,7 @@ public class script_objectCollector : MonoBehaviour
     public void SetupObject(GameObject goUI,GameObject goSoundManager)
     {
         go_UI = goUI;
-        go_SoundManager = goSoundManager;
+        //go_SoundManager = goSoundManager;
         SetupObjects();
         AssignPlayerToSpown();
         script_GameManager.Instance.objectCollector = gameObject;

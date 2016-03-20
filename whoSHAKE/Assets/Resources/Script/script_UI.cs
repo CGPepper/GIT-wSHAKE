@@ -29,7 +29,6 @@ public class script_UI : MonoBehaviour
 
     
     private float sky_rotation = 300f;
-    private AudioSource AudioSourceUI;
     private AudioSource AudioSourceVoice;
     delegate void DelayedMethod(string id); //used to delay sound playback with a coroutine
     private DelayedMethod tempDelegate;
@@ -61,7 +60,6 @@ public class script_UI : MonoBehaviour
         scObjectCollector = go_collector.GetComponent<script_objectCollector>();
         scSoundManager = go_soundmanager.GetComponent<script_SoundManager>();
         scModuleManager = go_moduleManager.GetComponent<script_ModuleManager>();
-        AudioSourceUI = GetComponent<AudioSource>();
         AudioSourceVoice = gameObject.transform.Find("VoiceSource").GetComponent<AudioSource>();
         if (!test)
         {

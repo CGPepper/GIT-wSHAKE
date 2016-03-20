@@ -32,6 +32,7 @@ public class script_ModuleManager : MonoBehaviour
             script_GameManager.Instance.NextRound();
             sc_UI.ShowSlider();
             sc_ObjectCollector.InteractibleObjects[0].GetComponent<script_Asteroid>().Reset();
+            sc_UI.UI_Elements[12].GetComponent<script_Preparation>().SetupPreparations();
         }
         else if (condition == "Hide")
         { 
