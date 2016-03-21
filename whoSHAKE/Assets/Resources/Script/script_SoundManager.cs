@@ -29,17 +29,20 @@ public class script_SoundManager : MonoBehaviour
 
     public void PlayUI(string param)
     {
-        param = "ui/" + param;   
+		string eventName = "ui/" + param;
+		Fabric.EventManager.Instance.PostEvent (eventName);
     }
 
     public void Play3D(string param, GameObject go)
     {
-        param = "3D/" + param;
+		string eventName = "3D/" + param;
+		Fabric.EventManager.Instance.PostEvent (eventName, go);
     }
 
     public void PlayVO(string CharType, string SoundGroup)
     {
-        string sRef = "vo/" + CharType + "/" + SoundGroup;
+        string eventName = "vo/" + CharType + "/" + SoundGroup;
+		Fabric.EventManager.Instance.PostEvent(eventName);
     }
 
     // /////////////////
