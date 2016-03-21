@@ -10,8 +10,6 @@ public class script_UI : MonoBehaviour
     public bool test = true;
     public GameObject[] PlayerStatsElements = new GameObject[8];
 
-    //[SerializeField]
-    //private AudioClip[] voiceSounds = new AudioClip[4];
     public Material skybox;
     [SerializeField]
     private GameObject[] initializeUiElements = new GameObject[1];
@@ -134,32 +132,16 @@ public class script_UI : MonoBehaviour
     **/
     public void sound_PlayMisc(string index) { scSoundManager.PlayIntro(index); }
 
-	// FIXME
-	// 
     public void sound_PlayVoice(string index)
     {
 		Fabric.EventManager.Instance.PostEvent("vo/intro/save_peasants");
 	}
 
-	/*
-	 * FIXME
-    public void sound_Charater(AudioClip[] clipArray) 
-    {
-        AudioSourceVoice.Stop();
-        int rand = Random.Range(0, clipArray.Length);
-        AudioSourceVoice.PlayOneShot(clipArray[rand]);
-    
-    }
-    */
-
-    // FIXME?
-	// lots of references in GameObjects to these functions
-	// lets keep them?
-	public void sound_PlayClick()   { scSoundManager.PlayClick(); 	}
-	public void sound_PlayButton()  { scSoundManager.PlayButton (); 	}
-	public void sound_PlayPaper()   { scSoundManager.PlayPageFlip (); }
-	public void sound_Woosh()       { scSoundManager.PlayWhoosh (); 	}
-	public void sound_SliderEnd()   { scSoundManager.PlaySlider (); 	}
+    public void sound_PlayClick() { scSoundManager.PlayUI("click"); }
+    public void sound_PlayButton() { scSoundManager.PlayUI("button"); }
+    public void sound_PlayPaper() { scSoundManager.PlayUI("paper"); }
+    public void sound_Woosh() { scSoundManager.PlayUI("woosh"); }
+    public void sound_SliderEnd() { scSoundManager.PlayUI("sliderEnd"); }
 
     /**
     Coroutines

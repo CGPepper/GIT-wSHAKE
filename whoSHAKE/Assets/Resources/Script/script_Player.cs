@@ -81,7 +81,7 @@ public class script_Player : MonoBehaviour {
         //Play sound
         if(b_Me)
         {
-            AudioClip[] clip = Character.GetComponent<script_Character>().Voices_Generic;
+            //AudioClip[] clip = Character.GetComponent<script_Character>().Voices_Generic;
             
 			// FIXME
 			//go_UI.GetComponent<script_UI>().sound_Charater(clip);

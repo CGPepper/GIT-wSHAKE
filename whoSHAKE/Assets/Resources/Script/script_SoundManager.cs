@@ -7,8 +7,8 @@ public class script_SoundManager : MonoBehaviour
     // /////////////////
     //       Setup
     // /////////////////
-    private GameObject go_UI;
-    private GameObject go_objectCollector;
+    //private GameObject go_UI;
+    //private GameObject go_objectCollector;
 
     void Awake()
     {
@@ -19,8 +19,8 @@ public class script_SoundManager : MonoBehaviour
     //Start function, activated when all sub-scenes are ready onAwake
     public void SetupObject(GameObject UI, GameObject objectCollector)
     {
-        go_UI = UI;
-        go_objectCollector = objectCollector;
+        //go_UI = UI;
+        //go_objectCollector = objectCollector;
     }
 
     // /////////////////
