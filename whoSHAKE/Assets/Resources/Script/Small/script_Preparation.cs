@@ -10,6 +10,12 @@ public class script_Preparation : MonoBehaviour
     private int TotDance;
     private int Time;
     private int ShowIndex;
+    private script_SoundManager sc_Sound;
+
+    public void SetupObject(GameObject goSound)
+    {
+        sc_Sound = goSound.GetComponent<script_SoundManager>();
+    }
 
     public void SetupPreparations()
     {
@@ -38,10 +44,7 @@ public class script_Preparation : MonoBehaviour
                 Camera.main.GetComponent<script_Camera>().SetZoomPoints(2f);
                 break;
         }
-        float tweenTime = 0.5f;
-        Elements[0].transform.DOScale(1f, tweenTime).SetEase(Ease.OutBack).OnComplete(Hold);
-        Elements[0].GetComponent<CanvasGroup>().alpha = 0;
-        Elements[0].GetComponent<CanvasGroup>().DOFade(1, tweenTime);
+        
     }
 
 
@@ -51,29 +54,39 @@ public class script_Preparation : MonoBehaviour
         Elements[1].GetComponent<TextMeshProUGUI>().text = number;
         Elements[0].transform.localScale = new Vector3(0, 0, 0);
         Elements[0].SetActive(true);
+        //Play
+        float tweenTime = 0.4f;
+        Elements[0].transform.DOScale(1f, tweenTime).SetEase(Ease.OutBack).OnComplete(Hold);
+        Elements[0].GetComponent<CanvasGroup>().alpha = 0;
+        Elements[0].GetComponent<CanvasGroup>().DOFade(1, tweenTime);
+        sc_Sound.PlayUI("prepPopIn");
     }
 
     private void Hold()
     {
-        Elements[0].transform.DOScale(1.2f,2f).SetEase(Ease.Linear).OnComplete(Out);
+        Elements[0].transform.DOScale(1.2f,1f).SetEase(Ease.Linear).OnComplete(Out);
     }
 
     private void Out()
     {
         Elements[0].transform.DOScale(10, 0.3f).SetEase(Ease.Linear).OnComplete(Reset);
         Elements[0].GetComponent<CanvasGroup>().DOFade(0, 0.3f);
+        sc_Sound.PlayUI("prepPopOut");
     }
 
     private void Reset()
     {
         Elements[0].SetActive(false);
-        if (ShowIndex <= 2)
+        int NrOfPopups = 3;
+        if (ShowIndex < NrOfPopups)
         {
             ShowIndex++;
             Show(ShowIndex);
         }
-        else
+        else if (ShowIndex == NrOfPopups)
         {
+            ShowIndex++;
+            SetComponent("", "GO");
             Camera.main.GetComponent<script_Camera>().SetNeutral(2f);
             script_GameManager.Instance.MainObjects[3].GetComponent<script_ModuleManager>().PrepModule("Hide");
         }

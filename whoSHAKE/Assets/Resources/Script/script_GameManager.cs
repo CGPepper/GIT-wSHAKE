@@ -18,10 +18,15 @@ public class script_GameManager : script_Singleton<script_GameManager>
         MainObjects[index] = go;
         if (MainObjects[0] && MainObjects[1] && MainObjects[2] && MainObjects[3])
         {
+            //Small Scripts
+            Camera.main.GetComponent<script_Camera>().SetupObject(MainObjects[2]);
+            MainObjects[0].GetComponent<script_UI>().UI_Elements[12].GetComponent<script_Preparation>().SetupObject(MainObjects[2]);
+            //Main
             MainObjects[1].GetComponent<script_objectCollector>().SetupObject(MainObjects[0],MainObjects[2]);
             MainObjects[2].GetComponent<script_SoundManager>().SetupObject(MainObjects[0], MainObjects[1]);
             MainObjects[3].GetComponent<script_ModuleManager>().SetupObject(MainObjects[0], MainObjects[1]);
             MainObjects[0].GetComponent<script_UI>().SetupObject(MainObjects[1], MainObjects[2], MainObjects[3]);
+            
         }
     }
 

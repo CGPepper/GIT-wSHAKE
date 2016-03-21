@@ -10,15 +10,18 @@ public class script_Camera : MonoBehaviour
     private Vector3 vCenteredPos = new Vector3(-3, 1, -7);
     private Vector3[,] vZoomPoints = new Vector3[3,2];
     private List<int> listZoom = new List<int>();
+    private script_SoundManager scSound;
 
-    void Awake()
+    public void SetupObject(GameObject soundManager)
     {
-        vZoomPoints[0, 0] = new Vector3(-3,0,-6);
+        scSound = soundManager.GetComponent<script_SoundManager>();
+        //Zoom points
+        vZoomPoints[0, 0] = new Vector3(-3, 0, -6);
         vZoomPoints[0, 1] = new Vector3(-10, 2, 0);
         vZoomPoints[1, 0] = new Vector3(-0.2f, -0.2f, -7f);
         vZoomPoints[1, 1] = new Vector3(-7, -23, 4);
         vZoomPoints[2, 0] = new Vector3(-1.3f, 2.3f, -5.5f);
-        vZoomPoints[2, 1] = new Vector3(16.5f, -12,-2);
+        vZoomPoints[2, 1] = new Vector3(16.5f, -12, -2);
     }
 
     public void SetupPrep(float duration)
@@ -37,6 +40,7 @@ public class script_Camera : MonoBehaviour
         Kill();
         transform.DOMove(vNeutralPos, duration).SetEase(Ease.OutExpo);
         transform.DORotate(vNeutralRot, duration).SetEase(Ease.OutExpo);
+        scSound.PlayUI("CamZoom");
     }
 
     public void SetCentered(float duration)
@@ -44,6 +48,7 @@ public class script_Camera : MonoBehaviour
         Kill();
         transform.DOMove(vCenteredPos, duration).SetEase(Ease.OutExpo);
         transform.DORotate(vNeutralRot, duration).SetEase(Ease.OutExpo);
+        scSound.PlayUI("CamZoom");
     }
 
     public void SetZoomPoints(float duration)
@@ -53,6 +58,7 @@ public class script_Camera : MonoBehaviour
         listZoom.Remove(Index);
         transform.DOMove(vZoomPoints[Index,0], duration).SetEase(Ease.OutExpo);
         transform.DORotate(vZoomPoints[Index,1], duration).SetEase(Ease.OutExpo);
+        scSound.PlayUI("CamZoom");
     }
 
     private void Kill()
