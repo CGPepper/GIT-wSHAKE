@@ -84,6 +84,10 @@ public class script_UI : MonoBehaviour
             bMouseDown = true;
         else if (Input.GetMouseButtonUp(0))
             ReleaseMouse();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            InteractibleElements[13].GetComponent<script_Settings>().Escape();
+        }
     }
 
     private void UI_Start()
@@ -209,7 +213,7 @@ public class script_UI : MonoBehaviour
         {
             
             Q_Tween(0, "UI_Main/frame_PlayerSelect", "playerSelectOut", false);
-            Q_Tween(0.3f, "Button_Settings", "ShowSettings", false);
+            Q_Tween(0.3f, "Settings/Button_Settings", "ShowSettings", false);
             /**
             
              **/
@@ -227,6 +231,11 @@ public class script_UI : MonoBehaviour
         else if (id == "kill cards")
         {
             DestroyOldCards();
+        }
+        else if (id == "Settings")
+        {
+            InteractibleElements[13].GetComponent<script_Settings>().Show();
+
         }
 
     }
