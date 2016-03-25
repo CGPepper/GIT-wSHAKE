@@ -38,16 +38,16 @@ public class script_Camera : MonoBehaviour
     public void SetNeutral(float duration)
     {
         Kill();
-        transform.DOMove(vNeutralPos, duration).SetEase(Ease.OutExpo);
-        transform.DORotate(vNeutralRot, duration).SetEase(Ease.OutExpo);
+        transform.DOMove(vNeutralPos, duration).SetEase(Ease.OutSine);
+        transform.DORotate(vNeutralRot, duration).SetEase(Ease.OutSine);
         scSound.PlayUI("CamZoom");
     }
 
     public void SetCentered(float duration)
     {
         Kill();
-        transform.DOMove(vCenteredPos, duration).SetEase(Ease.OutExpo);
-        transform.DORotate(vNeutralRot, duration).SetEase(Ease.OutExpo);
+        transform.DOMove(vCenteredPos, duration).SetEase(Ease.OutFlash);
+        transform.DORotate(vNeutralRot, duration).SetEase(Ease.OutFlash);
         scSound.PlayUI("CamZoom");
     }
 
@@ -56,8 +56,8 @@ public class script_Camera : MonoBehaviour
         Kill();
         int Index = listZoom[Random.Range(0, listZoom.Count)];
         listZoom.Remove(Index);
-        transform.DOMove(vZoomPoints[Index,0], duration).SetEase(Ease.OutExpo);
-        transform.DORotate(vZoomPoints[Index,1], duration).SetEase(Ease.OutExpo);
+        transform.DOMove(vZoomPoints[Index, 0], duration).SetEase(Ease.OutFlash);
+        transform.DORotate(vZoomPoints[Index, 1], duration).SetEase(Ease.OutFlash);
         scSound.PlayUI("CamZoom");
     }
 

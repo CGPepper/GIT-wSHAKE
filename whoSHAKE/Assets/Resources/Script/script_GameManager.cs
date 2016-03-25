@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 #pragma warning disable 0168 // variable declared but not used.
 #pragma warning disable 0219 // variable assigned but not used.
+using UnityEngine.SceneManagement;
 
 public class script_GameManager : script_Singleton<script_GameManager> 
 {
@@ -29,6 +30,20 @@ public class script_GameManager : script_Singleton<script_GameManager>
             MainObjects[0].GetComponent<script_UI>().SetupObject(MainObjects[1], MainObjects[2], MainObjects[3]);
             
         }
+    }
+
+    public void Reset()
+    {
+        for (int i = 0; i < MainObjects.Length; i++)
+        {
+            MainObjects[i] = null;
+        }
+        for (int y = 0; y < GlobalValues.Length; y++)
+        {
+            GlobalValues[y] = 0;
+        }
+        Application.LoadLevel(Application.loadedLevel);
+        //SceneManager.LoadScene("scene_UI");
     }
 
 

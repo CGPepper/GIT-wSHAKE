@@ -37,11 +37,11 @@ public class script_Preparation : MonoBehaviour
                 break;
             case 2:
                 SetComponent("TOTAL DANCE", TotDance.ToString());
-                Camera.main.GetComponent<script_Camera>().SetZoomPoints(2f);
+                Camera.main.GetComponent<script_Camera>().SetZoomPoints(3f);
                 break;
             case 3:
                 SetComponent("TIME",Time + "s");
-                Camera.main.GetComponent<script_Camera>().SetZoomPoints(2f);
+                Camera.main.GetComponent<script_Camera>().SetZoomPoints(3f);
                 break;
         }
         
@@ -87,7 +87,7 @@ public class script_Preparation : MonoBehaviour
         {
             ShowIndex++;
             SetComponent("", "GO");
-            Camera.main.GetComponent<script_Camera>().SetNeutral(2f);
+            Camera.main.GetComponent<script_Camera>().SetNeutral(1f);
             script_GameManager.Instance.MainObjects[3].GetComponent<script_ModuleManager>().PrepModule("Hide");
         }
         
