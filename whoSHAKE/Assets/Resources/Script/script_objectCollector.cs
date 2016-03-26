@@ -21,6 +21,8 @@ public class script_objectCollector : MonoBehaviour
     public GameObject[] nameTags = new GameObject[5];
     public GameObject[] PLAYERS = new GameObject[5];
     public GameObject[] Characters = new GameObject[7];
+    public GameObject[] Structures = new GameObject[5];
+    public GameObject[] StructuresSpown = new GameObject[5];
     public List<GameObject> charactersAvailabe = new List<GameObject>();
     //public GameObject[] _PLAYERS { get { return PLAYERS; } }
     [SerializeField]
@@ -169,6 +171,11 @@ public class script_objectCollector : MonoBehaviour
             script_Player player = PLAYERS[i].GetComponent<script_Player>();
             player.setSpown(spownPoints[i]);
         }
+    }
+
+    public void ShuffleStructures()
+    {
+        ShuffleArray<GameObject>(Structures);
     }
     /** ---------------------------------------------
      * Characters

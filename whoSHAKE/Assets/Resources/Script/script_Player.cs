@@ -22,6 +22,10 @@ public class script_Player : MonoBehaviour {
     public static GameObject go_UI;
     public static GameObject go_Collector;
 
+    public GameObject Structure;
+    public GameObject Army;
+    public GameObject Sleeper;
+
     // 0 Population 1 Army 2 Food 3 Rest 4 Dance 5 SetArmy 6 SetFood 7 SetRest 8 SetDance
     public int[] Stats = new int[9];
     //
@@ -92,6 +96,17 @@ public class script_Player : MonoBehaviour {
     {
         index = index + 4;
         Stats[index] = (int)value;
+    }
+
+    public void SetProps(GameObject structure)
+    {
+        
+        Transform structureSpown = go_SpownPoint.transform.FindChild("spown_Building");
+        Vector3 pos = structureSpown.position;
+        Quaternion rot = structureSpown.rotation;
+        structure.transform.position = pos;
+        structure.transform.rotation = rot;
+        structure.SetActive(true);
     }
 
 }

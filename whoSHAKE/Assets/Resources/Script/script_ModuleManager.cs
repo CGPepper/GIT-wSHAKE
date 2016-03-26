@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class script_ModuleManager : MonoBehaviour 
 {
@@ -8,7 +9,6 @@ public class script_ModuleManager : MonoBehaviour
     *********************************************************** */
     private script_UI sc_UI;
     private script_objectCollector sc_ObjectCollector;
-
 
 	void Awake()
     {
@@ -31,6 +31,7 @@ public class script_ModuleManager : MonoBehaviour
         {
             sc_UI.ShowSlider();
             sc_ObjectCollector.InteractibleObjects[0].GetComponent<script_Asteroid>().Reset();
+          
         }
         else if (condition == "Hide")
         { 
@@ -85,5 +86,25 @@ public class script_ModuleManager : MonoBehaviour
     { 
         
     }
+    /* ***********************************************************
+   ********************** Setup Player Props *********************
+   *********************************************************** */
+    public void SetupPlayerProps()
+    {
+        script_Player scPlayer;
+        sc_ObjectCollector.ShuffleStructures();
+        GameObject[] Structures = sc_ObjectCollector.Structures;
+        List<GameObject> ActivePlayers = script_GameManager.Instance.GetActivePlayers();
+        int index = 0;
+        foreach (GameObject go in ActivePlayers)
+        {
+            scPlayer = go.GetComponent<script_Player>();
+            scPlayer.SetProps(Structures[index]);
+            index++;
+        }
+    }
+    
+    
+    
     
 }

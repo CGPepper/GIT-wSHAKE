@@ -214,9 +214,7 @@ public class script_UI : MonoBehaviour
             
             Q_Tween(0, "UI_Main/frame_PlayerSelect", "playerSelectOut", false);
             Q_Tween(0.3f, "Settings/Button_Settings", "ShowSettings", false);
-            /**
-            
-             **/
+            scModuleManager.SetupPlayerProps();
             scModuleManager.PrepModule("Show");
         }
         else if (id == "endSelection")

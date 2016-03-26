@@ -86,7 +86,6 @@ public class script_Settings : MonoBehaviour
     public void LockEscape() //prevents bugs when player presses escapes before the animation is finished
     {
         bLockEscape = !bLockEscape;
-        Debug.Log(bLockEscape);
     }
     /** ***************************
      *      Helper Functions
