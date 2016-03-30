@@ -45,6 +45,12 @@ public class script_SoundManager : MonoBehaviour
 		Fabric.EventManager.Instance.PostEvent(eventName);
     }
 
+	public void StopVO(string CharType, string SoundGroup)
+	{
+		string eventName = "vo/" + CharType + "/" + SoundGroup;
+		Fabric.EventManager.Instance.PostEvent(eventName, Fabric.EventAction.StopSound);
+	}
+
 	public void PlayIntro(string index)
 	{
 		//Fabric.EventManager.Instance.PostEvent ("ui/slider");

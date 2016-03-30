@@ -27,7 +27,6 @@ public class script_UI : MonoBehaviour
 
     
     private float sky_rotation = 300f;
-    private AudioSource AudioSourceVoice;
     delegate void DelayedMethod(string id); //used to delay sound playback with a coroutine
     private DelayedMethod tempDelegate;
     private script_objectCollector scObjectCollector;
@@ -58,7 +57,7 @@ public class script_UI : MonoBehaviour
         scObjectCollector = go_collector.GetComponent<script_objectCollector>();
         scSoundManager = go_soundmanager.GetComponent<script_SoundManager>();
         scModuleManager = go_moduleManager.GetComponent<script_ModuleManager>();
-        AudioSourceVoice = gameObject.transform.Find("VoiceSource").GetComponent<AudioSource>();
+
         if (!test)
         {
             UI_Start();
@@ -136,9 +135,10 @@ public class script_UI : MonoBehaviour
     **/
     public void sound_PlayMisc(string index) { scSoundManager.PlayIntro(index); }
 
-    public void sound_PlayVoice(string index)
+	// FIXME get rid of function param / rename?
+	public void sound_PlayVoice(string index)
     {
-		Fabric.EventManager.Instance.PostEvent("vo/intro/save_peasants");
+		scSoundManager.PlayVO ("intro", "save_peasants");
 	}
 
     public void sound_PlayClick() { scSoundManager.PlayUI("click"); }
@@ -192,7 +192,9 @@ public class script_UI : MonoBehaviour
         }
         else if (id == "GoodLord_Ok")
         {
-            AudioSourceVoice.Stop();
+			// FIXME better param names
+			scSoundManager.StopVO ("intro", "save_peasants");
+
             Q_Tween(0, "UI_Main/frame_GoodLord", "GoodLordEnd", false);//dont forget to disable
             Q_Tween(0, "UI_Main/frame_2Frame", "modeSelectIn", false);
 
