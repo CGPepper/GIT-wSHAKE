@@ -143,9 +143,9 @@ public class script_UI : MonoBehaviour
 
     public void sound_PlayClick() { scSoundManager.PlayUI("click"); }
     public void sound_PlayButton() { scSoundManager.PlayUI("button"); }
-    public void sound_PlayPaper() { scSoundManager.PlayUI("paper"); }
-    public void sound_Woosh() { scSoundManager.PlayUI("woosh"); }
-    public void sound_SliderEnd() { scSoundManager.PlayUI("sliderEnd"); }
+    public void sound_PlayPaper() { scSoundManager.PlayUI("pageflip"); }
+    public void sound_Woosh() { scSoundManager.PlayUI("whoosh"); }
+    public void sound_SliderEnd() { scSoundManager.PlayUI("slider"); }
 
     /**
     Coroutines

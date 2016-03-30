@@ -45,33 +45,6 @@ public class script_SoundManager : MonoBehaviour
 		Fabric.EventManager.Instance.PostEvent(eventName);
     }
 
-    // /////////////////
-    //       Old Methods
-    // /////////////////
-	public void PlayButton()
-	{
-		Fabric.EventManager.Instance.PostEvent ("ui/button");
-	}
-
-	public void PlaySlider()
-	{
-		Fabric.EventManager.Instance.PostEvent ("ui/slider");
-	}
-
-	public void PlayWhoosh()
-	{
-		Fabric.EventManager.Instance.PostEvent ("ui/whoosh");
-	}
-
-	public void PlayPageFlip()
-	{
-		Fabric.EventManager.Instance.PostEvent ("ui/pageflip");
-	}
-	
-	public void PlayClick ()
-	{
-	}
-
 	public void PlayIntro(string index)
 	{
 		//Fabric.EventManager.Instance.PostEvent ("ui/slider");
