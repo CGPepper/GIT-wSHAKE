@@ -29,6 +29,7 @@ public class script_SoundManager : MonoBehaviour
 
     public void PlayUI(string param)
     {
+		Debug.Log (param);
 		string eventName = "ui/" + param;
 		Fabric.EventManager.Instance.PostEvent (eventName);
     }
